@@ -780,6 +780,10 @@ ul.checkout-payment-methods li label img,
   outline: none;
 }
 
+#billing_address_2::placeholder {
+  color: grey !important;
+}
+
 .checkout label {
   font-size: 15px;
   font-weight: 400;
@@ -1082,6 +1086,7 @@ body #customer_details #ship-to-different-address {
 }
 
 @media screen and (max-width: 400px) {
+
   ul.checkout-payment-methods li label,
   #customer_details ul#shipping_method li label {
     flex-direction: column;

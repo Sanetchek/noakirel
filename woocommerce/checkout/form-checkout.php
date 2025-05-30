@@ -144,11 +144,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                             <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
                             <?php
-                            $subtotal = wp_strip_all_tags(wc_price(WC()->cart->get_subtotal()));
+                            $subtotal = wp_strip_all_tags( wc_price( WC()->cart->get_subtotal() + WC()->cart->get_shipping_total() ) );
                             $total = wp_strip_all_tags(wc_price(WC()->cart->total));
                             $text = __('לתשלום', 'noakirel');
 
-                            $order_button_html = '<span class="subtotal-price">' . $text . ' ' . esc_html($subtotal) . '</span>';
+                            $order_button_html = '<span class="subtotal-price">' . $text . ' ' . esc_html($total) . '</span>';
 
                             if ( WC()->cart->get_discount_total() > 0 ) {
                                 $order_button_html = '<span class="subtotal-price">' . $text . ' ' . esc_html($total) . '</span> <span class="total-price">' . esc_html($subtotal) . '</span>';

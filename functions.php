@@ -163,7 +163,7 @@ function display_checkout_summary() {
 		<?php if ( WC()->cart->get_discount_total() > 0 ) : ?>
 			<div class="custom-order-discount custom-order-width">
 				<span class="custom-order-label"><?php _e( 'לאחר הנחת קוד קופון', 'noakirel' ); ?>:</span>
-				<span class="custom-order-amount"><?php echo WC()->checkout->get_value( 'order_total' ) ? wc_price( WC()->cart->get_total() ) : wc_price( WC()->cart->total ); ?></span>
+				<span class="custom-order-amount"><?php echo WC()->cart->get_cart_contents_total()  ? wc_price( WC()->cart->get_cart_contents_total() ) : wc_price( WC()->cart->total ); ?></span>
 			</div>
 		<?php endif; ?>
 		<?php
@@ -262,7 +262,7 @@ if ( version_compare( get_bloginfo( 'version' ), '4.7.3', '>=' ) && ( is_admin()
      ?>
      <style>
      #billing_address_2::placeholder {
-         color: #43454b !important;
+         color: #616161 !important;
          opacity: 1 !important;
      }
      #billing_address_2 {
@@ -523,7 +523,7 @@ function custom_clean_checkout_fields( $fields ) {
     $fields['billing']['billing_address_1']['label'] = 'כתובת';
     $fields['billing']['billing_address_2']['label'] = 'דירה / קומה (אופציונלי)';
     $fields['billing']['billing_city']['label'] = 'עיר';
-    $fields['billing']['billing_postcode']['label'] = 'מיקוד (אופציונלי)';
+    $fields['billing']['billing_postcode']['label'] = 'מיקוד';
 
     return $fields;
 }
