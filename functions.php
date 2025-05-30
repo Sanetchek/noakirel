@@ -71,6 +71,8 @@ function my_custom_assets() {
 	if ( is_checkout() ) {
 		wp_enqueue_style( 'checkout-style', get_stylesheet_directory_uri() . '/assets/css/checkout-style.css', array(), '1.0', 'all' );
 	}
+
+	wp_enqueue_style( 'noakirel-custom-style', get_stylesheet_directory_uri() . '/assets/css/noakirel-styles.css', array(), '1.0', 'all' );
 }
 
 add_action( 'wp_ajax_woocommerce_apply_coupon', 'custom_apply_coupon' );

@@ -1,21 +1,4 @@
 <?php
-/**
- * Shipping Methods Display
- *
- * In 2.1 we show methods per package. This allows for multiple methods per order if so desired.
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/cart/cart-shipping.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see https://woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates
- * @version 8.8.0
- */
 
 defined( 'ABSPATH' ) || exit;
 
@@ -36,44 +19,39 @@ $calculator_text          = '';
 						} else {
 							printf( '<input type="hidden" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" />', $index, esc_attr( sanitize_title( $method->id ) ), esc_attr( $method->id ) ); // WPCS: XSS ok.
 						}
-						printf( '<label for="shipping_method_%1$s_%2$s">%3$s</label>', $index, esc_attr( sanitize_title( $method->id ) ), wc_cart_totals_shipping_method_label( $method ) ); // WPCS: XSS ok.
+
+						$descriptions = [
+							'flat_rate:1' => __('זמן משלוח מוערך 3-5 ימי עסקים', 'noakirel')
+						];
+
+						$method_name        = $method->get_label(); // Only the title
+						$method_cost_label  = wc_price( $method->cost ); // Cost with currency formatting
+						$method_description = $descriptions[ $method->id ] ?? '';
+
+						printf(
+							'<label for="shipping_method_%1$s_%2$s">
+								<span class="shipping-method-label">
+									<span class="shipping-method-name">%3$s</span>
+									<span class="shipping-method-description">%4$s</span>
+								</span>
+								<span class="shipping-method-cost">%5$s</span>
+							</label>',
+							$index,
+							esc_attr( sanitize_title( $method->id ) ),
+							esc_html( $method_name ),
+							esc_html( $method_description ),
+							$method->cost > 0 ? $method_cost_label : ''
+						);
+
+						// printf( '<label for="shipping_method_%1$s_%2$s">%3$s</label>', $index, esc_attr( sanitize_title( $method->id ) ), wc_cart_totals_shipping_method_label( $method ) ); // WPCS: XSS ok.
 						do_action( 'woocommerce_after_shipping_rate', $method, $index );
 						?>
 					</li>
 				<?php endforeach; ?>
 			</ul>
-			<?php if ( is_cart() ) : ?>
-				<p class="woocommerce-shipping-destination">
-					<?php
-					if ( $formatted_destination ) {
-						// Translators: $s shipping destination.
-						printf( esc_html__( 'Shipping to %s.', 'woocommerce' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' );
-						$calculator_text = esc_html__( 'Change address', 'woocommerce' );
-					} else {
-						echo wp_kses_post( apply_filters( 'woocommerce_shipping_estimate_html', __( 'Shipping options will be updated during checkout.', 'woocommerce' ) ) );
-					}
-					?>
-				</p>
-			<?php endif; ?>
 			<?php
-		elseif ( ! $has_calculated_shipping || ! $formatted_destination ) :
-			if ( is_cart() && 'no' === get_option( 'woocommerce_enable_shipping_calc' ) ) {
-				echo wp_kses_post( apply_filters( 'woocommerce_shipping_not_enabled_on_cart_html', __( 'Shipping costs are calculated during checkout.', 'woocommerce' ) ) );
-			} else {
-				echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) );
-			}
-		elseif ( ! is_cart() ) :
-			echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) );
 		else :
 			echo wp_kses_post(
-				/**
-				 * Provides a means of overriding the default 'no shipping available' HTML string.
-				 *
-				 * @since 3.0.0
-				 *
-				 * @param string $html                  HTML message.
-				 * @param string $formatted_destination The formatted shipping destination.
-				 */
 				apply_filters(
 					'woocommerce_cart_no_shipping_available_html',
 					// Translators: $s shipping destination.

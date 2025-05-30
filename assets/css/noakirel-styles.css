@@ -1,0 +1,12 @@
+a.view-cart.active {
+  display: none !important;
+}
+
+.ins-content .ins-cart-inner.ins-cart-step .ins-cart-btns a,
+.ins-content .ins-cart-btns a.active {
+  background-color: #890009 !important;
+}
+
+.ins-checkout-modern .ins-cart-item-quantity .qty {
+  border: 0.2px solid #890009 !important;
+}

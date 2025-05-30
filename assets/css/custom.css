@@ -152,7 +152,8 @@ button.menu-toggle::before {
     display: block;
     position: absolute;
     left: 50%;
-    top: 10px;
+    top: 50%;
+    transform: translate(-50%, -50%);
     margin-left: -25px;
     width: 100%;
     max-width: 50px;
@@ -1307,17 +1308,18 @@ body .ins-checkout-modern .ins-cart-content-wrap {
   box-shadow: none !important;
 }
 
-body .ins-content .woocommerce-error {
+body .woocommerce-error {
   background-color: #ffffff !important;
   background: white;
   border: 1px solid #1c1c1c;
+  margin: 0 !important;
 }
 
-.ins-content .woocommerce-message,
-.ins-content .woocommerce-info,
-.ins-content .woocommerce-error,
-.ins-content .woocommerce-noreviews,
-.ins-content p.no-comments {
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error,
+.woocommerce-noreviews,
+p.no-comments {
   background-color: #ffffff !important;
   background: white;
   border: 1px solid #1c1c1c;
@@ -1328,8 +1330,8 @@ body .ins-cart-inner.shipping .woocommerce-form__label-for-checkbox {
   display: flex;
 }
 
-body .ins-content .woocommerce-error li,
-body .ins-content .woocommerce-error:before {
+body .woocommerce-error li,
+body .woocommerce-error:before {
   color: #1c1c1c !important
 }
 
@@ -1738,7 +1740,8 @@ body .ins-single-step .ins-step-icon {
     padding: 0 !important;
     position: absolute;
     right: 36px;
-    top: 4px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .site-header .cart_home {
@@ -1757,8 +1760,9 @@ body .ins-single-step .ins-step-icon {
     justify-content: center;
     gap: 80px;
     position: absolute;
-    top: 5px;
+    top: 50%;
     left: 36px;
+    transform: translateY(-50%);
   }
 
   .main-menu-wrapper.active {
@@ -2064,14 +2068,6 @@ body .ins-single-step .ins-step-icon {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 40px 20px !important;
     margin: 0 !important;
-  }
-
-  #masthead.is-sticky .menu-toggle {
-    top: 20px;
-  }
-
-  #masthead.is-sticky .logo_mobile {
-    top: 20px;
   }
 
   #masthead.is-sticky .cart {

@@ -114,8 +114,16 @@ body .checkout-address-wrapper #ship-to-different-address .woocommerce-form__inp
   top: 0;
 }
 
-ul.woocommerce-error * {
-  color: #fff;
+.shipping-method-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.shipping-method-description {
+  font-weight: 400;
+  font-size: 13px;
+  text-align: right;
+  color: #767676;
 }
 
 .coupon-entry {
@@ -718,6 +726,7 @@ ul.checkout-payment-methods li label img,
   font-family: sans-serif;
   margin: auto;
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 100%;
   justify-content: space-between;
@@ -945,12 +954,11 @@ body #customer_details #ship-to-different-address {
 }
 
 .woocommerce-NoticeGroup.woocommerce-NoticeGroup-checkout {
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  margin-left: -400px;
   width: 100%;
-  max-width: 800px;
+}
+
+.woocommerce-billing-fields>h3 {
+  display: none !important;
 }
 
 @media (max-width: 992px) {
@@ -971,7 +979,7 @@ body #customer_details #ship-to-different-address {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 30px 30px;
+    padding: 10px 15px 30px;
   }
 
   .woocommerce-checkout.woocommerce-page .custom-order {
@@ -988,6 +996,11 @@ body #customer_details #ship-to-different-address {
 
   .checkout .form-row {
     margin-bottom: 20px;
+  }
+
+  ul.checkout-payment-methods li label,
+  #customer_details ul#shipping_method li label {
+    font-size: 16px;
   }
 
   #customer_details #ship-to-different-address {
@@ -1065,5 +1078,14 @@ body #customer_details #ship-to-different-address {
 
   #checkout-cart h2 {
     font-size: 24px !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  ul.checkout-payment-methods li label,
+  #customer_details ul#shipping_method li label {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
   }
 }

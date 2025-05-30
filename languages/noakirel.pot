@@ -2,49 +2,49 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Storefront 99999\n"
+"Project-Id-Version: Noakirel 99999\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/storefront\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-29T21:46:51+03:00\n"
+"POT-Creation-Date: 2025-05-30T12:49:59+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: storefront\n"
+"X-Domain: noakirel\n"
 
 #. Theme Name of the theme
-#: backup
-msgid "Storefront"
+#: style.css
+msgid "Noakirel"
 msgstr ""
 
 #. Theme URI of the theme
-#: backup
+#: style.css
 msgid "https://woocommerce.com/products/storefront/"
 msgstr ""
 
 #. Description of the theme
-#: backup
+#: style.css
 msgid "Storefront is the perfect theme for your next WooCommerce project. Designed and developed by WooCommerce Core developers, it features a bespoke integration with WooCommerce itself plus many of the most popular customer facing WooCommerce extensions. There are several layout & color options to personalise your shop, multiple widget regions, a responsive design and much more. Developers will love its lean and extensible codebase making it a joy to customize and extend. Looking for a WooCommerce theme? Look no further!"
 msgstr ""
 
 #. Author of the theme
-#: backup
+#: style.css
 msgid "Automattic"
 msgstr ""
 
 #. Author URI of the theme
-#: backup
+#: style.css
 msgid "https://woocommerce.com/"
 msgstr ""
 
-#: backup/comments.php:21
+#: comments.php:21
 msgid "Post Comments"
 msgstr ""
 
 #. translators: 1: number of comments, 2: post title
-#: backup/comments.php:31
+#: comments.php:31
 #, php-format
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
@@ -52,48 +52,48 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: backup/comments.php:40
+#: comments.php:40
 msgid "Comment Navigation Above"
 msgstr ""
 
-#: backup/comments.php:41
-#: backup/comments.php:61
+#: comments.php:41
+#: comments.php:61
 msgid "Comment navigation"
 msgstr ""
 
-#: backup/comments.php:42
-#: backup/comments.php:62
+#: comments.php:42
+#: comments.php:62
 msgid "&larr; Older Comments"
 msgstr ""
 
-#: backup/comments.php:43
-#: backup/comments.php:63
+#: comments.php:43
+#: comments.php:63
 msgid "Newer Comments &rarr;"
 msgstr ""
 
-#: backup/comments.php:60
+#: comments.php:60
 msgid "Comment Navigation Below"
 msgstr ""
 
-#: backup/comments.php:72
+#: comments.php:72
 msgid "Comments are closed."
 msgstr ""
 
-#: backup/content-none.php:14
+#: content-none.php:14
 msgid "Nothing Found"
 msgstr ""
 
 #. translators: 1: URL
-#: backup/content-none.php:23
+#: content-none.php:23
 #, php-format
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
-#: backup/content-none.php:29
+#: content-none.php:29
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 
-#: backup/content-none.php:34
+#: content-none.php:34
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
@@ -101,767 +101,812 @@ msgstr ""
 msgid "Front - Home"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:74
+#. Template Name of the theme
+msgid "Front page"
+msgstr ""
+
+#: functions.php:85
+#: functions.php:104
+msgid "No coupon code provided."
+msgstr ""
+
+#: functions.php:91
+msgid "Invalid or expired coupon."
+msgstr ""
+
+#: functions.php:112
+msgid "Failed to remove coupon."
+msgstr ""
+
+#: functions.php:135
+msgid "קופון:"
+msgstr ""
+
+#: functions.php:136
+msgid "Remove coupon"
+msgstr ""
+
+#: functions.php:158
+msgid "תשלום"
+msgstr ""
+
+#: functions.php:163
+msgid "לאחר הנחת קוד קופון"
+msgstr ""
+
+#: functions.php:176
+msgid "משלוח"
+msgstr ""
+
+#: functions.php:188
+msgid "תשלום סופי"
+msgstr ""
+
+#: functions.php:191
+msgid "מחיר כולל מע״מ"
+msgstr ""
+
+#: inc/admin/class-storefront-admin.php:74
 msgid "Support"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:75
+#: inc/admin/class-storefront-admin.php:75
 msgid "Documentation"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:76
+#: inc/admin/class-storefront-admin.php:76
 msgid "Development blog"
 msgstr ""
 
 #. translators: 1: HTML, 2: HTML
-#: backup/inc/admin/class-storefront-admin.php:104
+#: inc/admin/class-storefront-admin.php:104
 #, php-format
 msgid "Setup complete %1$sYour Storefront adventure begins now 🚀%2$s "
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:105
+#: inc/admin/class-storefront-admin.php:105
 msgid "One more thing... You might be interested in the following Storefront extensions and designs."
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:107
+#: inc/admin/class-storefront-admin.php:107
 msgid "Hello! You might be interested in the following Storefront extensions and designs."
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:118
+#: inc/admin/class-storefront-admin.php:118
 msgid "Storefront Extensions Bundle"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:124
+#: inc/admin/class-storefront-admin.php:124
 msgid "All the tools you'll need to define your style and customize Storefront."
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:128
+#: inc/admin/class-storefront-admin.php:128
 msgid "Make it yours without touching code with the Storefront Extensions bundle. Express yourself, optimize conversions, delight customers."
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:133
+#: inc/admin/class-storefront-admin.php:133
 msgid "Read more and purchase"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:137
+#: inc/admin/class-storefront-admin.php:137
 msgid "Alternate designs"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:141
+#: inc/admin/class-storefront-admin.php:141
 msgid "Quickly and easily transform your shops appearance with Storefront child themes."
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:145
+#: inc/admin/class-storefront-admin.php:145
 msgid "Each has been designed to serve a different industry - from fashion to food."
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:149
+#: inc/admin/class-storefront-admin.php:149
 msgid "Of course they are all fully compatible with each Storefront extension."
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:153
+#: inc/admin/class-storefront-admin.php:153
 msgid "Check 'em out"
 msgstr ""
 
 #. translators: %s: Automattic branding
-#: backup/inc/admin/class-storefront-admin.php:162
+#: inc/admin/class-storefront-admin.php:162
 #, php-format
 msgid "An %s project"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:191
-#: backup/inc/admin/class-storefront-plugin-install.php:62
+#: inc/admin/class-storefront-admin.php:191
+#: inc/admin/class-storefront-plugin-install.php:62
 msgid "Activated"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:200
-#: backup/inc/admin/class-storefront-plugin-install.php:75
+#: inc/admin/class-storefront-admin.php:200
+#: inc/admin/class-storefront-plugin-install.php:75
 msgid "Activate"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:217
-#: backup/inc/admin/class-storefront-plugin-install.php:96
+#: inc/admin/class-storefront-admin.php:217
+#: inc/admin/class-storefront-plugin-install.php:96
 msgid "Install now"
 msgstr ""
 
-#: backup/inc/admin/class-storefront-admin.php:224
+#: inc/admin/class-storefront-admin.php:224
 msgid "Learn more"
 msgstr ""
 
 #. translators: conjunction of two alternative options user can choose (in missing plugin admin notice). Example: "Activate WooCommerce or learn more"
-#: backup/inc/admin/class-storefront-plugin-install.php:115
+#: inc/admin/class-storefront-plugin-install.php:115
 msgid "or"
 msgstr ""
 
 #. translators: conjunction of two alternative options user can choose (in missing plugin admin notice). Example: "Activate WooCommerce or learn more"
-#: backup/inc/admin/class-storefront-plugin-install.php:116
+#: inc/admin/class-storefront-plugin-install.php:116
 msgid "learn more"
 msgstr ""
 
-#: backup/inc/class-storefront.php:95
-#: backup/inc/nux/class-storefront-nux-starter-content.php:162
+#: inc/class-storefront.php:95
+#: inc/nux/class-storefront-nux-starter-content.php:162
 msgid "Primary Menu"
 msgstr ""
 
-#: backup/inc/class-storefront.php:96
-#: backup/inc/nux/class-storefront-nux-starter-content.php:182
+#: inc/class-storefront.php:96
+#: inc/nux/class-storefront-nux-starter-content.php:182
 msgid "Secondary Menu"
 msgstr ""
 
-#: backup/inc/class-storefront.php:97
-#: backup/inc/nux/class-storefront-nux-starter-content.php:192
+#: inc/class-storefront.php:97
+#: inc/nux/class-storefront-nux-starter-content.php:192
 msgid "Handheld Menu"
 msgstr ""
 
-#: backup/inc/class-storefront.php:187
+#: inc/class-storefront.php:187
 msgid "Small"
 msgstr ""
 
-#: backup/inc/class-storefront.php:192
+#: inc/class-storefront.php:192
 msgid "Normal"
 msgstr ""
 
-#: backup/inc/class-storefront.php:197
+#: inc/class-storefront.php:197
 msgid "Medium"
 msgstr ""
 
-#: backup/inc/class-storefront.php:202
+#: inc/class-storefront.php:202
 msgid "Large"
 msgstr ""
 
-#: backup/inc/class-storefront.php:207
+#: inc/class-storefront.php:207
 msgid "Huge"
 msgstr ""
 
-#: backup/inc/class-storefront.php:251
+#: inc/class-storefront.php:251
 msgid "Sidebar"
 msgstr ""
 
-#: backup/inc/class-storefront.php:257
+#: inc/class-storefront.php:257
 msgid "Below Header"
 msgstr ""
 
-#: backup/inc/class-storefront.php:259
+#: inc/class-storefront.php:259
 msgid "Widgets added to this region will appear beneath the header and above the main content."
 msgstr ""
 
 #. translators: 1: column number
-#: backup/inc/class-storefront.php:272
+#: inc/class-storefront.php:272
 #, php-format
 msgid "Footer Column %1$d"
 msgstr ""
 
 #. translators: 1: column number
-#: backup/inc/class-storefront.php:275
+#: inc/class-storefront.php:275
 #, php-format
 msgid "Widgets added here will appear in column %1$d of the footer."
 msgstr ""
 
 #. translators: 1: row number, 2: column number
-#: backup/inc/class-storefront.php:278
+#: inc/class-storefront.php:278
 #, php-format
 msgid "Footer Row %1$d - Column %2$d"
 msgstr ""
 
 #. translators: 1: column number, 2: row number
-#: backup/inc/class-storefront.php:281
+#: inc/class-storefront.php:281
 #, php-format
 msgid "Widgets added here will appear in column %1$d of footer row %2$d."
 msgstr ""
 
-#: backup/inc/class-storefront.php:355
+#: inc/class-storefront.php:355
 msgid "Expand child menu"
 msgstr ""
 
-#: backup/inc/class-storefront.php:356
+#: inc/class-storefront.php:356
 msgid "Collapse child menu"
 msgstr ""
 
-#: backup/inc/class-storefront.php:490
+#: inc/class-storefront.php:490
 msgid "Post Navigation"
 msgstr ""
 
 #. translators: 1: Storefront, 2: start <a> tag, 3: Storefront, 4: end <a> tag
-#: backup/inc/customizer/class-storefront-customizer-control-more.php:29
+#: inc/customizer/class-storefront-customizer-control-more.php:29
 #, php-format
 msgid "There's a range of %1$s extensions available to put additional power in your hands. Check out the %2$s%3$s%4$s page in your dashboard for more information."
 msgstr ""
 
 #. translators: %s: Storefront
-#: backup/inc/customizer/class-storefront-customizer-control-more.php:36
+#: inc/customizer/class-storefront-customizer-control-more.php:36
 #, php-format
 msgid "Enjoying %s?"
 msgstr ""
 
 #. translators: 1: start <a> tag, 2: end <a> tag
-#: backup/inc/customizer/class-storefront-customizer-control-more.php:43
+#: inc/customizer/class-storefront-customizer-control-more.php:43
 #, php-format
 msgid "Why not leave us a review on %1$sWordPress.org%2$s?  We'd really appreciate it!"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:130
+#: inc/customizer/class-storefront-customizer.php:130
 msgid "Background"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:134
+#: inc/customizer/class-storefront-customizer.php:134
 msgid "Header"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:190
+#: inc/customizer/class-storefront-customizer.php:190
 msgid "Typography"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:218
-#: backup/inc/customizer/class-storefront-customizer.php:522
+#: inc/customizer/class-storefront-customizer.php:218
+#: inc/customizer/class-storefront-customizer.php:522
 msgid "Heading color"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:249
-#: backup/inc/customizer/class-storefront-customizer.php:417
-#: backup/inc/customizer/class-storefront-customizer.php:553
-#: backup/inc/customizer/class-storefront-customizer.php:658
+#: inc/customizer/class-storefront-customizer.php:249
+#: inc/customizer/class-storefront-customizer.php:417
+#: inc/customizer/class-storefront-customizer.php:553
+#: inc/customizer/class-storefront-customizer.php:658
 msgid "Text color"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:280
+#: inc/customizer/class-storefront-customizer.php:280
 msgid "Link / accent color"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:311
+#: inc/customizer/class-storefront-customizer.php:311
 msgid "Hero heading color"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:342
+#: inc/customizer/class-storefront-customizer.php:342
 msgid "Hero text color"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:357
+#: inc/customizer/class-storefront-customizer.php:357
 msgid "Header background image"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:386
-#: backup/inc/customizer/class-storefront-customizer.php:491
-#: backup/inc/customizer/class-storefront-customizer.php:627
+#: inc/customizer/class-storefront-customizer.php:386
+#: inc/customizer/class-storefront-customizer.php:491
+#: inc/customizer/class-storefront-customizer.php:627
 msgid "Background color"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:448
-#: backup/inc/customizer/class-storefront-customizer.php:584
+#: inc/customizer/class-storefront-customizer.php:448
+#: inc/customizer/class-storefront-customizer.php:584
 msgid "Link color"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:462
+#: inc/customizer/class-storefront-customizer.php:462
 msgid "Footer"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:464
+#: inc/customizer/class-storefront-customizer.php:464
 msgid "Customize the look & feel of your website footer."
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:598
+#: inc/customizer/class-storefront-customizer.php:598
 msgid "Buttons"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:600
+#: inc/customizer/class-storefront-customizer.php:600
 msgid "Customize the look & feel of your website buttons."
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:689
+#: inc/customizer/class-storefront-customizer.php:689
 msgid "Alternate button background color"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:720
+#: inc/customizer/class-storefront-customizer.php:720
 msgid "Alternate button text color"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:734
+#: inc/customizer/class-storefront-customizer.php:734
 msgid "Layout"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:761
+#: inc/customizer/class-storefront-customizer.php:761
 msgid "General Layout"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:782
+#: inc/customizer/class-storefront-customizer.php:782
 msgid "More"
 msgstr ""
 
-#: backup/inc/customizer/class-storefront-customizer.php:800
+#: inc/customizer/class-storefront-customizer.php:800
 msgid "Looking for more options?"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin-inbox-messages-customize.php:34
+#: inc/nux/class-storefront-nux-admin-inbox-messages-customize.php:34
 msgid "Design your store with Storefront 🎨"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin-inbox-messages-customize.php:35
+#: inc/nux/class-storefront-nux-admin-inbox-messages-customize.php:35
 msgid "Visit the Storefront settings page to start setup and customization of your shop."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin-inbox-messages-customize.php:42
-#: backup/inc/nux/class-storefront-nux-admin.php:180
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:112
+#: inc/nux/class-storefront-nux-admin-inbox-messages-customize.php:42
+#: inc/nux/class-storefront-nux-admin.php:180
+#: inc/nux/class-storefront-nux-guided-tour.php:112
 msgid "Let's go!"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:128
+#: inc/nux/class-storefront-nux-admin.php:128
 msgid "Thanks for installing Storefront, you rock! 🤘"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:129
+#: inc/nux/class-storefront-nux-admin.php:129
 msgid "To enable eCommerce features you need to install the WooCommerce plugin."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:130
+#: inc/nux/class-storefront-nux-admin.php:130
 msgid "WooCommerce activated"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:130
+#: inc/nux/class-storefront-nux-admin.php:130
 msgid "Activate WooCommerce"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:130
+#: inc/nux/class-storefront-nux-admin.php:130
 msgid "Install WooCommerce"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:134
+#: inc/nux/class-storefront-nux-admin.php:134
 msgid "Design your store 🎨"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:138
+#: inc/nux/class-storefront-nux-admin.php:138
 msgid "Before you add your first product let's design your store. We'll add some example products for you. When you're ready let's get started by adding your logo."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:140
+#: inc/nux/class-storefront-nux-admin.php:140
 msgid "You've set up WooCommerce, now it's time to give it some style! Let's get started by entering the Customizer and adding your logo."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:162
+#: inc/nux/class-storefront-nux-admin.php:162
 msgid "Apply the Storefront homepage template"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:164
+#: inc/nux/class-storefront-nux-admin.php:164
 msgid "Create a homepage using Storefront's homepage template"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:174
+#: inc/nux/class-storefront-nux-admin.php:174
 msgid "Add example products"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-admin.php:181
+#: inc/nux/class-storefront-nux-admin.php:181
 msgid "Skip"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:83
+#: inc/nux/class-storefront-nux-guided-tour.php:83
 msgid "Next"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:89
+#: inc/nux/class-storefront-nux-guided-tour.php:89
 msgid "No thanks, skip the tour"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:91
+#: inc/nux/class-storefront-nux-guided-tour.php:91
 msgid "Skip this step"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:109
+#: inc/nux/class-storefront-nux-guided-tour.php:109
 msgid "Welcome to the Customizer"
 msgstr ""
 
 #. translators: %s: 'End Of Line' symbol
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:111
+#: inc/nux/class-storefront-nux-guided-tour.php:111
 #, php-format
 msgid "Here you can control the overall look and feel of your store.%sTo get started, let's add your logo"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:118
+#: inc/nux/class-storefront-nux-guided-tour.php:118
 msgid "Add your logo"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:119
+#: inc/nux/class-storefront-nux-guided-tour.php:119
 msgid "Open the Site Identity Panel, then click the 'Select Logo' button to upload your logo."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:125
+#: inc/nux/class-storefront-nux-guided-tour.php:125
 msgid "Customize your navigation menus"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:126
+#: inc/nux/class-storefront-nux-guided-tour.php:126
 msgid "Organize your menus by adding Pages, Categories, Tags, and Custom Links."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:131
+#: inc/nux/class-storefront-nux-guided-tour.php:131
 msgid "Choose your accent color"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:132
+#: inc/nux/class-storefront-nux-guided-tour.php:132
 msgid "In the typography panel you can specify an accent color which will be applied to things like links and star ratings. We recommend using your brand color for this setting."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:137
+#: inc/nux/class-storefront-nux-guided-tour.php:137
 msgid "Color your buttons"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:138
+#: inc/nux/class-storefront-nux-guided-tour.php:138
 msgid "Choose colors for your button backgrounds and text. Once again, brand colors are good choices here."
 msgstr ""
 
 #. translators: 1: open <strong> tag, 2: close <strong> tag, 3: 'End Of Line' symbol
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:145
+#: inc/nux/class-storefront-nux-guided-tour.php:145
 #, php-format
 msgid "All set! Remember to %1$ssave & publish%2$s your changes when you're done.%3$sYou can return to your dashboard by clicking the X in the top left corner."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-guided-tour.php:147
+#: inc/nux/class-storefront-nux-guided-tour.php:147
 msgid "Done"
 msgstr ""
 
 #. Template Name of the theme
-#: backup/inc/nux/class-storefront-nux-starter-content.php:66
+#: inc/nux/class-storefront-nux-starter-content.php:66
 msgid "Homepage"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:71
+#: inc/nux/class-storefront-nux-starter-content.php:71
 msgid "About"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:72
+#: inc/nux/class-storefront-nux-starter-content.php:72
 msgid "You might be an artist who would like to introduce yourself and your work here or maybe you&rsquo;re a business with a mission to describe."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:76
+#: inc/nux/class-storefront-nux-starter-content.php:76
 msgid "Contact"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:77
+#: inc/nux/class-storefront-nux-starter-content.php:77
 msgid "This is a page with some basic contact information, such as an address and phone number. You might also try a plugin to add a contact form."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:704
+#: inc/nux/class-storefront-nux-starter-content.php:704
 msgid "Accessories"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:705
-#: backup/inc/nux/class-storefront-nux-starter-content.php:708
-#: backup/inc/nux/class-storefront-nux-starter-content.php:711
+#: inc/nux/class-storefront-nux-starter-content.php:705
+#: inc/nux/class-storefront-nux-starter-content.php:708
+#: inc/nux/class-storefront-nux-starter-content.php:711
 msgid "A short category description"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:707
+#: inc/nux/class-storefront-nux-starter-content.php:707
 msgid "Hoodies"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:710
+#: inc/nux/class-storefront-nux-starter-content.php:710
 msgid "Tshirts"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:716
+#: inc/nux/class-storefront-nux-starter-content.php:716
 msgid "Beanie"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:738
+#: inc/nux/class-storefront-nux-starter-content.php:738
 msgid "Belt"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:760
+#: inc/nux/class-storefront-nux-starter-content.php:760
 msgid "Cap"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:782
+#: inc/nux/class-storefront-nux-starter-content.php:782
 msgid "Sunglasses"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:803
+#: inc/nux/class-storefront-nux-starter-content.php:803
 msgid "Hoodie with Logo"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:824
+#: inc/nux/class-storefront-nux-starter-content.php:824
 msgid "Hoodie with Pocket"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:846
+#: inc/nux/class-storefront-nux-starter-content.php:846
 msgid "Hoodie with Zipper"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:867
+#: inc/nux/class-storefront-nux-starter-content.php:867
 msgid "Hoodie"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:889
+#: inc/nux/class-storefront-nux-starter-content.php:889
 msgid "Long Sleeve Tee"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:910
+#: inc/nux/class-storefront-nux-starter-content.php:910
 msgid "Polo"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:931
+#: inc/nux/class-storefront-nux-starter-content.php:931
 msgid "Tshirt"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:952
+#: inc/nux/class-storefront-nux-starter-content.php:952
 msgid "Vneck Tshirt"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:1021
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:303
+#: inc/nux/class-storefront-nux-starter-content.php:1021
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:303
 msgid "Shop by Category"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:1029
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:358
+#: inc/nux/class-storefront-nux-starter-content.php:1029
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:358
 msgid "New In"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:1037
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:470
+#: inc/nux/class-storefront-nux-starter-content.php:1037
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:470
 msgid "Fan Favorites"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:1043
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:526
+#: inc/nux/class-storefront-nux-starter-content.php:1043
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:526
 msgid "On Sale"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:1049
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:582
+#: inc/nux/class-storefront-nux-starter-content.php:1049
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:582
 msgid "Best Sellers"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:1074
+#: inc/nux/class-storefront-nux-starter-content.php:1074
 msgid "Welcome"
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:1078
+#: inc/nux/class-storefront-nux-starter-content.php:1078
 msgid "This is your homepage which is what most visitors will see when they first visit your shop."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:1082
+#: inc/nux/class-storefront-nux-starter-content.php:1082
 msgid "You can change this text by editing the \"Welcome\" page via the \"Pages\" menu in your dashboard."
 msgstr ""
 
-#: backup/inc/nux/class-storefront-nux-starter-content.php:1108
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:414
+#: inc/nux/class-storefront-nux-starter-content.php:1108
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:414
 msgid "We Recommend"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:48
+#: inc/storefront-template-functions.php:48
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:75
+#: inc/storefront-template-functions.php:75
 msgid "Edit"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:142
+#: inc/storefront-template-functions.php:142
 msgid "WooCommerce - The Best eCommerce Platform for WordPress"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:142
+#: inc/storefront-template-functions.php:142
 msgid "Built with WooCommerce"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:144
+#: inc/storefront-template-functions.php:144
 msgid "Storefront -  The perfect platform for your next WooCommerce project."
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:144
+#: inc/storefront-template-functions.php:144
 msgid "Built with Storefront"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:241
+#: inc/storefront-template-functions.php:241
 msgid "Primary Navigation"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:242
+#: inc/storefront-template-functions.php:242
 msgid "Menu"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:273
+#: inc/storefront-template-functions.php:273
 msgid "Secondary Navigation"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:297
+#: inc/storefront-template-functions.php:297
 msgid "Skip to navigation"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:298
+#: inc/storefront-template-functions.php:298
 msgid "Skip to content"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:310
+#: inc/storefront-template-functions.php:310
 msgid "Edit this section"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:356
-#: backup/inc/storefront-template-functions.php:427
+#: inc/storefront-template-functions.php:356
+#: inc/storefront-template-functions.php:427
 msgid "Pages:"
 msgstr ""
 
 #. translators: %s: post title
-#: backup/inc/storefront-template-functions.php:418
+#: inc/storefront-template-functions.php:418
 #, php-format
 msgid "Continue reading %s"
 msgstr ""
 
 #. translators: %s: post date
-#: backup/inc/storefront-template-functions.php:468
+#: inc/storefront-template-functions.php:468
 #, php-format
 msgid "Posted on %s"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:474
+#: inc/storefront-template-functions.php:474
 msgid "by"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:483
+#: inc/storefront-template-functions.php:483
 msgid "Leave a comment"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:483
+#: inc/storefront-template-functions.php:483
 msgid "1 Comment"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:483
+#: inc/storefront-template-functions.php:483
 msgid "% Comments"
 msgstr ""
 
 #. translators: %s: Name of current post. Only visible to screen readers
-#: backup/inc/storefront-template-functions.php:523
+#: inc/storefront-template-functions.php:523
 #, php-format
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr ""
 
 #. translators: used between list items, there is a space after the comma
-#: backup/inc/storefront-template-functions.php:546
-#: backup/inc/storefront-template-functions.php:549
+#: inc/storefront-template-functions.php:546
+#: inc/storefront-template-functions.php:549
 msgid ", "
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:555
+#: inc/storefront-template-functions.php:555
 msgid "Category:"
 msgid_plural "Categories:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: backup/inc/storefront-template-functions.php:561
+#: inc/storefront-template-functions.php:561
 msgid "Tag:"
 msgid_plural "Tags:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: backup/inc/storefront-template-functions.php:579
+#: inc/storefront-template-functions.php:579
 msgctxt "Next post"
 msgid "Next"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:580
+#: inc/storefront-template-functions.php:580
 msgctxt "Previous post"
 msgid "Previous"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:593
+#: inc/storefront-template-functions.php:593
 msgid "Next post:"
 msgstr ""
 
-#: backup/inc/storefront-template-functions.php:594
+#: inc/storefront-template-functions.php:594
 msgid "Previous post:"
 msgstr ""
 
-#: backup/inc/woocommerce/class-storefront-woocommerce-customizer.php:60
+#: inc/woocommerce/class-storefront-woocommerce-customizer.php:60
 msgid "Product Page"
 msgstr ""
 
-#: backup/inc/woocommerce/class-storefront-woocommerce-customizer.php:87
+#: inc/woocommerce/class-storefront-woocommerce-customizer.php:87
 msgid "Sticky Add-To-Cart"
 msgstr ""
 
-#: backup/inc/woocommerce/class-storefront-woocommerce-customizer.php:88
+#: inc/woocommerce/class-storefront-woocommerce-customizer.php:88
 msgid "A small content bar at the top of the browser window which includes relevant product information and an add-to-cart button. It slides into view once the standard add-to-cart button has scrolled out of view."
 msgstr ""
 
-#: backup/inc/woocommerce/class-storefront-woocommerce-customizer.php:98
+#: inc/woocommerce/class-storefront-woocommerce-customizer.php:98
 msgid "Product Pagination"
 msgstr ""
 
-#: backup/inc/woocommerce/class-storefront-woocommerce-customizer.php:99
+#: inc/woocommerce/class-storefront-woocommerce-customizer.php:99
 msgid "Displays next and previous links on product pages. A product thumbnail is displayed with the title revealed on hover."
 msgstr ""
 
-#: backup/inc/woocommerce/class-storefront-woocommerce.php:226
+#: inc/woocommerce/class-storefront-woocommerce.php:226
 msgid "breadcrumbs"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:91
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:91
 msgid "View your shopping cart"
 msgstr ""
 
 #. translators: %d: number of items in cart
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:93
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:93
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:324
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:324
 msgid "Product Categories"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:379
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:379
 msgid "Recent Products"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:436
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:641
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:436
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:641
 msgid "Featured Products"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:491
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:491
 msgid "Popular Products"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:548
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:548
 msgid "On Sale Products"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:603
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:603
 msgid "Best Selling Products"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:654
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:654
 msgid "On Sale Now"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:667
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:667
 msgid "New In Store"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:743
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:743
 msgid "Search"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:759
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:759
 msgid "Cart"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:773
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:773
 msgid "My Account"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:803
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:803
 msgid "More products"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:867
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:867
 msgid "You're viewing:"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:903
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:903
 msgid "Shop by Brand"
 msgstr ""
 
-#: backup/inc/woocommerce/storefront-woocommerce-template-functions.php:920
+#: inc/woocommerce/storefront-woocommerce-template-functions.php:920
 msgid "Product Brands"
 msgstr ""
 
@@ -874,7 +919,7 @@ msgid "Order Pay Custom"
 msgstr ""
 
 #. translators: %s: search term
-#: backup/search.php:19
+#: search.php:19
 #, php-format
 msgid "Search Results for: %s"
 msgstr ""
@@ -883,6 +928,212 @@ msgstr ""
 msgid "Full width"
 msgstr ""
 
-#. Template Name of the theme
-msgid "Front page"
+#: woocommerce/checkout/form-checkout.php:7
+msgid "You must be logged in to checkout."
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:17
+msgid "בית"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:20
+msgid "צ׳קאוט"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:35
+msgid "אפשרויות משלוח"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:45
+msgid "אפשרויות תשלום"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:63
+msgid "סיכום הזמנה"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:77
+msgid "Product"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:91
+msgid "Remove this item"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:95
+msgid "הסרה"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:99
+msgid "Price"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:107
+msgid "Your cart is currently empty."
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:116
+msgid "קוד קופון:"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:120
+msgid "* הכנס קוד קופון"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:121
+msgid "Apply coupon"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:121
+msgid "הפעלה"
+msgstr ""
+
+#: woocommerce/checkout/form-pay.php:7
+msgid "Invalid order."
+msgstr ""
+
+#: woocommerce/checkout/payment.php:40
+msgid "לתשלום"
+msgstr ""
+
+#. translators: %s: Order number
+#: woocommerce/emails/admin-cancelled-order.php:16
+#, php-format
+msgid "ההזמנה מספר %s בוטלה."
+msgstr ""
+
+#. translators: %s: Order number
+#: woocommerce/emails/admin-failed-order.php:16
+#, php-format
+msgid "נכשל נסיון ביצוע תשלום עבור הזמנה מספר %s. ייתכן ותידרש פעולה מצדך."
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:8
+msgid "התקבלה הזמנה חדשה"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:11
+msgid "מספר הזמנה"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:11
+msgid "מאתר Signature By Noa Kirel"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:18
+msgid "פרטי ההזמנה"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:24
+msgid "מוצר"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:25
+msgid "תמונה"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:26
+msgid "כמות"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:27
+msgid "מחיר"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:56
+msgid "סכום ביניים:"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:60
+msgid "משלוח:"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:64
+msgid "סה״כ לתשלום:"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:72
+msgid "פרטי הלקוח"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:74
+msgid "שם:"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:76
+msgid "טלפון:"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:79
+msgid "אימייל:"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:87
+msgid "כתובת למשלוח"
+msgstr ""
+
+#: woocommerce/emails/admin-new-order.php:94
+msgid "כתובת לחיוב"
+msgstr ""
+
+#: woocommerce/emails/customer-completed-order.php:13
+msgid "ההזמנה שלך הושלמה ונשלחה. תודה שבחרת בנו!"
+msgstr ""
+
+#: woocommerce/emails/customer-completed-order.php:22
+msgid "לכל שאלה או בעיה, אנחנו זמינים במייל:"
+msgstr ""
+
+#: woocommerce/emails/customer-failed-order.php:13
+msgid "לצערנו, הזמנתך לא הושלמה עקב בעיית תשלום. ניתן לנסות שוב או ליצור קשר איתנו."
+msgstr ""
+
+#: woocommerce/emails/customer-failed-order.php:22
+msgid "לסיוע, אנא צרו קשר במייל:"
+msgstr ""
+
+#. translators: %s: Customer first name
+#: woocommerce/emails/customer-processing-order.php:22
+#, php-format
+msgid "שלום %s, תודה על הזמנתך. כבר מטפלים בה והיא תשלח אליך בהקדם."
+msgstr ""
+
+#: woocommerce/emails/customer-processing-order.php:28
+msgid "פרטי ההזמנה שלך"
+msgstr ""
+
+#: woocommerce/emails/customer-processing-order.php:50
+msgid "אם יש לך שאלות, ניתן לפנות אלינו בכל עת דרך האתר או במייל:"
+msgstr ""
+
+#: woocommerce/emails/customer-refunded-order.php:13
+msgid "החזר כספי בוצע עבור ההזמנה שלך. ניתן לראות את הפרטים המלאים להלן."
+msgstr ""
+
+#: woocommerce/emails/customer-refunded-order.php:22
+msgid "במידה ויש שאלה לגבי ההחזר, כתבו לנו לכתובת:"
+msgstr ""
+
+#: woocommerce/emails/email-footer.php:4
+msgid "אם יש לך שאלות בנוגע להזמנה שלך, אנא צור איתנו קשר:"
+msgstr ""
+
+#: woocommerce/emails/email-footer.php:10
+msgid "תנאי שימוש"
+msgstr ""
+
+#: woocommerce/emails/email-footer.php:13
+msgid "מדיניות פרטיות"
+msgstr ""
+
+#: woocommerce/emails/email-footer.php:16
+msgid "תנאי מכירה כלליים"
+msgstr ""
+
+#: woocommerce/emails/email-footer.php:19
+msgid "הצהרת נגישות"
+msgstr ""
+
+#: woocommerce/emails/email-footer.php:24
+msgid "Signature By Noa Kirel. כל הזכויות שמורות."
 msgstr ""

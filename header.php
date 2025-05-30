@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="logo_mobile">
-			<img src="/wp-content/uploads/2025/05/Isolation_Mode-2.svg" alt="sss">
+			<a href="/"><img src="/wp-content/uploads/2025/05/Isolation_Mode-2.svg" alt="sss"></a>
 		</div>
 	</header>
 	<script>

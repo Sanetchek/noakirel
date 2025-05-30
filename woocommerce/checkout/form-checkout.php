@@ -11,16 +11,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
     <div class="checkout-side-details">
-        <div class="checkout-breadcrumbs">
-            <div class="checkout-breadcrumbs-wrapper">
-                <div class="checkout-breadcrumbs-item">
-                    <a href="<?php echo home_url(); ?>"><?php _e( 'בית', 'noakirel' ); ?></a>
-                </div>
-                <div class="checkout-breadcrumbs-item active">
-                    <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>"><?php _e( 'צ׳קאוט', 'noakirel' ); ?></a>
-                </div>
-            </div>
-        </div>
         <div id="customer_details">
             <h1>פרטי משלוח</h1>
             <div class="checkout-address-wrapper">
@@ -44,9 +34,15 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                 if (!empty($available_gateways)) {
                     echo '<h2>'  . __('אפשרויות תשלום', 'noakirel') . '</h2>';
                     echo '<ul class="checkout-payment-methods">';
-                    foreach ($available_gateways as $gateway) {
-                        wc_get_template('checkout/payment-method.php', array('gateway' => $gateway));
-                    }
+                    foreach ($available_gateways as $gateway) : ?>
+                        <li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?>">
+                            <input id="payment_method_<?php echo esc_attr( $gateway->id ); ?>" type="radio" class="input-radio payment_method_radio payment_method_<?php echo esc_attr( $gateway->id ); ?>" name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?> data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
+
+                            <label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>">
+                                <?php echo $gateway->get_title(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?> <?php echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
+                            </label>
+                        </li>
+                    <?php endforeach;
                     echo '</ul>';
                 } else {
                     echo '<li>';
@@ -134,7 +130,48 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                 <div class="woocommerce-payment-methods-wrapper">
                     <?php do_action( 'woocommerce_review_order_before_payment' ); ?>
                     <div id="payment" class="woocommerce-checkout-payment-wrapper">
-                        <?php wc_get_template( 'checkout/payment.php' ); ?>
+                        <div class="form-row place-order">
+                            <noscript>
+                                <?php
+                                /* translators: $1 and $2 opening and closing emphasis tags respectively */
+                                printf( esc_html__( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the %1$sUpdate Totals%2$s button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'woocommerce' ), '<em>', '</em>' );
+                                ?>
+                                <br/><button type="submit" class="button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); ?></button>
+                            </noscript>
+
+                            <?php wc_get_template( 'checkout/terms.php' ); ?>
+
+                            <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
+
+                            <?php
+                            $subtotal = wp_strip_all_tags(wc_price(WC()->cart->get_subtotal()));
+                            $total = wp_strip_all_tags(wc_price(WC()->cart->total));
+                            $text = __('לתשלום', 'noakirel');
+
+                            $order_button_html = '<span class="subtotal-price">' . $text . ' ' . esc_html($subtotal) . '</span>';
+
+                            if ( WC()->cart->get_discount_total() > 0 ) {
+                                $order_button_html = '<span class="subtotal-price">' . $text . ' ' . esc_html($total) . '</span> <span class="total-price">' . esc_html($subtotal) . '</span>';
+                            }
+
+                            echo apply_filters(
+                                'woocommerce_order_button_html',
+                                '<button type="submit" class="button alt' . esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : '') . '" name="woocommerce_checkout_place_order" id="place_order">'
+                                . $order_button_html .
+                                '</button>'
+                            );
+                            ?>
+
+
+                            <?php do_action( 'woocommerce_review_order_after_submit' ); ?>
+
+                            <?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>
+                        </div>
+                        <?php
+                        if ( ! wp_doing_ajax() ) {
+                            do_action( 'woocommerce_review_order_after_payment' );
+                        }
+                        ?>
                     </div>
                     <?php do_action( 'woocommerce_review_order_after_payment' ); ?>
                 </div>
@@ -274,6 +311,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                 },
                 beforeSend: function() {
                     $('.shipping_method').prop('disabled', true);
+                    $('.checkout-payment-methods-wrapper input').prop('disabled', true);
                     $('.checkout-loader').addClass('show');
                 },
                 success: function(response) {
@@ -282,11 +320,14 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         var $newCoupons = $(data).find('.applied-coupons-wrapper').html();
                         var $newSummary = $(data).find('.custom-order-summary').html();
                         var $newPayment = $(data).find('.woocommerce-checkout-payment-wrapper').html();
+                        var $newPaymentMethod = $(data).find('.checkout-payment-methods-wrapper').html();
                         $('.applied-coupons-wrapper').html($newCoupons);
                         $('.custom-order-summary').html($newSummary);
                         $('.woocommerce-checkout-payment-wrapper').html($newPayment);
+                        $('.checkout-payment-methods-wrapper').html($newPaymentMethod);
                         $('.checkout-loader').removeClass('show');
                         $('.shipping_method').prop('disabled', false);
+                        $('.checkout-payment-methods-wrapper input').prop('disabled', false);
                     });
                 },
                 error: function(xhr) {
