@@ -1,0 +1,298 @@
+<?php
+defined( 'ABSPATH' ) || exit;
+
+do_action( 'woocommerce_before_checkout_form', $checkout );
+
+if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
+    echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'noakirel' ) ) );
+    return;
+}
+?>
+
+<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+    <div class="checkout-side-details">
+        <div class="checkout-breadcrumbs">
+            <div class="checkout-breadcrumbs-wrapper">
+                <div class="checkout-breadcrumbs-item">
+                    <a href="<?php echo home_url(); ?>"><?php _e( 'בית', 'noakirel' ); ?></a>
+                </div>
+                <div class="checkout-breadcrumbs-item active">
+                    <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>"><?php _e( 'צ׳קאוט', 'noakirel' ); ?></a>
+                </div>
+            </div>
+        </div>
+        <div id="customer_details">
+            <h1>פרטי משלוח</h1>
+            <div class="checkout-address-wrapper">
+                <div class="col-1">
+                    <?php do_action( 'woocommerce_checkout_billing' ); ?>
+                </div>
+                <div class="col-2">
+                    <?php do_action( 'woocommerce_checkout_shipping' ); ?>
+                </div>
+            </div>
+            <div class="woocommerce-shipping-methods-wrapper">
+                <h2><?= __('אפשרויות משלוח', 'noakirel') ?></h2>
+                <div class="shipping-method-options">
+                    <?php wc_cart_totals_shipping_html(); ?>
+                </div>
+            </div>
+            <div class="checkout-payment-methods-wrapper">
+                <?php
+                $available_gateways = WC()->payment_gateways()->get_available_payment_gateways();
+                error_log(print_r($available_gateways, true)); // Check logs in wp-content/debug.log
+                if (!empty($available_gateways)) {
+                    echo '<h2>'  . __('אפשרויות תשלום', 'noakirel') . '</h2>';
+                    echo '<ul class="checkout-payment-methods">';
+                    foreach ($available_gateways as $gateway) {
+                        wc_get_template('checkout/payment-method.php', array('gateway' => $gateway));
+                    }
+                    echo '</ul>';
+                } else {
+                    echo '<li>';
+                    wc_print_notice(apply_filters('woocommerce_no_available_payment_methods_message', WC()->customer->get_billing_country() ? esc_html__('Sorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce') : esc_html__('Please fill in your details above to see available payment methods.', 'woocommerce')), 'notice');
+                    echo '</li>';
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-side-cart">
+        <div id="checkout-cart">
+            <h2><?php _e( 'סיכום הזמנה', 'noakirel' ); ?></h2>
+
+            <?php if ( WC()->cart->get_cart_contents_count() > 0 ) : ?>
+                <div class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                    <?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) :
+                        $_product   = $cart_item['data'];
+                        if ( ! $_product || ! $_product->exists() || $cart_item['quantity'] <= 0 ) continue;
+                        $product_permalink = $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '';
+                        ?>
+                        <div class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
+                            <div class="cart-item-wrapper">
+                                <div class="product-thumbnail">
+                                    <?php echo $_product->get_image(); ?>
+                                </div>
+                                <div class="product-name" data-title="<?php esc_attr_e( 'Product', 'noakirel' ); ?>">
+                                    <?php
+                                    if ( ! $product_permalink ) {
+                                        echo wp_kses_post( $_product->get_name() );
+                                    } else {
+                                        echo wp_kses_post( sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ) );
+                                    }
+                                    ?>
+                                    <div class="product-quantity-inline">
+                                        <?php echo intval( $cart_item['quantity'] ); ?>
+                                    </div>
+                                    <div class="product-remove-inline">
+                                        <a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>"
+                                            class="remove"
+                                            aria-label="<?php esc_attr_e( 'Remove this item', 'noakirel' ); ?>"
+                                            data-product_id="<?php echo esc_attr( $cart_item['product_id'] ); ?>"
+                                            data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>"
+                                            data-product_sku="<?php echo esc_attr( $_product->get_sku() ); ?>">
+                                            <?php _e( 'הסרה', 'noakirel' ); ?>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-price" data-title="<?php esc_attr_e( 'Price', 'noakirel' ); ?>">
+                                    <?php echo wc_price( $_product->get_price() ); ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else : ?>
+                <p class="woocommerce-cart-empty"><?php esc_html_e( 'Your cart is currently empty.', 'noakirel' ); ?></p>
+            <?php endif; ?>
+
+            <div class="checkout-coupon-wrapper">
+                <div class="checkout-loader">
+                    <div class="spinner"></div>
+                </div>
+
+                <div class="coupon-entry">
+                    <h3><?php _e( 'קוד קופון:', 'noakirel' ); ?></h3>
+                    <?php if ( get_option( 'woocommerce_enable_coupons' ) === 'yes' ) : ?>
+                        <div class="checkout_coupon woocommerce-form-coupon">
+                            <div class="checkout_coupon_wrapper">
+                                <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( '* הכנס קוד קופון', 'noakirel' ); ?>" id="coupon_code" value="" />
+                                <button type="button" class="button apply-coupon-button" data-nonce="<?php echo wp_create_nonce( 'apply-coupon' ); ?>" value="<?php esc_attr_e( 'Apply coupon', 'noakirel' ); ?>"><?php esc_html_e( 'הפעלה', 'noakirel' ); ?></button>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <div class="applied-coupons-wrapper">
+                        <?php display_coupon_code(); ?>
+                    </div>
+                </div>
+
+                <div class="custom-order-summary">
+                    <?php display_checkout_summary(); ?>
+                </div>
+
+                <div class="woocommerce-payment-methods-wrapper">
+                    <?php do_action( 'woocommerce_review_order_before_payment' ); ?>
+                    <div id="payment" class="woocommerce-checkout-payment-wrapper">
+                        <?php wc_get_template( 'checkout/payment.php' ); ?>
+                    </div>
+                    <?php do_action( 'woocommerce_review_order_after_payment' ); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        // Apply coupon
+        $('.apply-coupon-button').on('click', function(e) {
+            e.preventDefault();
+
+            var $button = $(this);
+            var $wrapper = $button.closest('.checkout_coupon_wrapper');
+            var couponCode = $wrapper.find('input[name="coupon_code"]').val();
+            var nonce = $button.data('nonce');
+
+            if (!couponCode) {
+                alert('<?php esc_html_e( "נא להזין קוד קופון.", "woocommerce" ); ?>');
+                return;
+            }
+
+            $button.prop('disabled', true).text('<?php esc_html_e( "מיישם...", "woocommerce" ); ?>');
+
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+                data: {
+                    action: 'woocommerce_apply_coupon',
+                    coupon_code: couponCode,
+                    security: nonce
+                },
+                beforeSend: function() {
+                    $('.checkout-loader').addClass('show');
+                },
+                success: function(response) {
+                    // Clear any existing messages
+                    $('.woocommerce-message').remove();
+                    // Fetch updated coupon display
+                    $.get('<?php echo esc_url( wc_get_checkout_url() ); ?>', function(data) {
+                        var $newCoupons = $(data).find('.applied-coupons-wrapper').html();
+                        var $newSummary = $(data).find('.custom-order-summary').html();
+                        var $newPayment = $(data).find('.woocommerce-checkout-payment-wrapper').html();
+                        $('.applied-coupons-wrapper').html($newCoupons);
+                        $('.custom-order-summary').html($newSummary);
+                        $('.woocommerce-checkout-payment-wrapper').html($newPayment);
+                        // Show success message
+                        $('.coupon-entry').before('<div class="woocommerce-message" role="alert"><?php esc_html_e( "קוד קופון הוחל בהצלחה.", "woocommerce" ); ?></div>');
+                        setTimeout(function() {
+                            $('.woocommerce-message').fadeOut('slow', function() { $(this).remove(); });
+                        }, 3000); // Remove message after 3 seconds
+
+                        // Clear the input field
+                        $wrapper.find('input[name="coupon_code"]').val('');
+                        $button.prop('disabled', false).text('<?php esc_html_e( "הפעלה", "woocommerce" ); ?>');
+                        $('.checkout-loader').removeClass('show');
+                    });
+                },
+                error: function(xhr) {
+                    console.log('AJAX Error:', xhr.status, xhr.responseText);
+                    alert('<?php esc_html_e( "שגיאה ביישום הקופון. אנא נסה שוב.", "woocommerce" ); ?>');
+                    $button.prop('disabled', false).text('<?php esc_html_e( "הפעלה", "woocommerce" ); ?>');
+                }
+            });
+        });
+
+        // Remove coupon
+        $('body').on('click', '.remove-coupon', function(e) {
+            e.preventDefault();
+
+            var $link = $(this);
+            var couponCode = $link.data('coupon');
+            var nonce = $link.data('nonce');
+
+            if (!couponCode || !nonce) {
+                alert('<?php esc_html_e( "Missing coupon or nonce.", "woocommerce" ); ?>');
+                return;
+            }
+
+            $link.text('<?php esc_html_e( "מסיר...", "woocommerce" ); ?>');
+            const data = {
+                action: 'checkout_remove_coupon',
+                coupon: couponCode,
+                security: nonce
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+                data,
+                beforeSend: function() {
+                    $('.checkout-loader').addClass('show');
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Clear any existing messages
+                        $('.woocommerce-message').remove();
+                        $.get('<?php echo esc_url( wc_get_checkout_url() ); ?>', function(data) {
+                            var $newCoupons = $(data).find('.applied-coupons-wrapper').html();
+                            var $newSummary = $(data).find('.custom-order-summary').html();
+                            var $newPayment = $(data).find('.woocommerce-checkout-payment-wrapper').html();
+                            $('.applied-coupons-wrapper').html($newCoupons);
+                            $('.custom-order-summary').html($newSummary);
+                            $('.woocommerce-checkout-payment-wrapper').html($newPayment);
+                            // Show success message
+                            $('.coupon-entry').before('<div class="woocommerce-message" role="alert"><?php esc_html_e( "קופון הוסר בהצלחה.", "woocommerce" ); ?></div>');
+                            setTimeout(function() {
+                                $('.woocommerce-message').fadeOut('slow', function() { $(this).remove(); });
+                            }, 3000);
+                            $('.checkout-loader').removeClass('show');
+                        });
+                    } else {
+                        alert(response.data && response.data.message ? response.data.message : '<?php esc_html_e( "שגיאה בהסרת הקופון.", "woocommerce" ); ?>');
+                        $link.text('×');
+                    }
+                },
+                error: function(xhr) {
+                    console.log('AJAX Error:', xhr.status, xhr.responseText);
+                    alert('<?php esc_html_e( "שגיאה בהסרת הקופון. אנא נסה שוב.", "woocommerce" ); ?>');
+                    $link.text('×');
+                }
+            });
+        });
+
+        $('.shipping_method').on('change', function() {
+            $.ajax({
+                type: 'POST',
+                url: wc_checkout_params.ajax_url,
+                data: {
+                    action: 'woocommerce_update_order_review',
+                    security: wc_checkout_params.update_order_review_nonce,
+                    shipping_method: [$(this).val()]
+                },
+                beforeSend: function() {
+                    $('.shipping_method').prop('disabled', true);
+                    $('.checkout-loader').addClass('show');
+                },
+                success: function(response) {
+                    // Update the order review
+                    jQuery.get('<?php echo esc_url( wc_get_checkout_url() ); ?>', function (data) {
+                        var $newCoupons = $(data).find('.applied-coupons-wrapper').html();
+                        var $newSummary = $(data).find('.custom-order-summary').html();
+                        var $newPayment = $(data).find('.woocommerce-checkout-payment-wrapper').html();
+                        $('.applied-coupons-wrapper').html($newCoupons);
+                        $('.custom-order-summary').html($newSummary);
+                        $('.woocommerce-checkout-payment-wrapper').html($newPayment);
+                        $('.checkout-loader').removeClass('show');
+                        $('.shipping_method').prop('disabled', false);
+                    });
+                },
+                error: function(xhr) {
+                    console.log('Error:', xhr.status, xhr.responseText);
+                }
+            });
+        });
+    });
+</script>

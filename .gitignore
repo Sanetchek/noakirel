@@ -1,0 +1,21 @@
+# Node modules
+/node_modules/
+/package-lock.json
+
+# Vendor files
+/vendor/
+/composer.lock
+
+# IDE files
+.idea/
+.vscode/
+
+# CSS files
+style.css
+style-rtl.css
+
+# JavaScript files
+assets/js/scripts.min.js
+
+# .env
+.env

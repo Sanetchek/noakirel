@@ -1,0 +1,32 @@
+{
+  "name": "sanetchek/noakirel",
+  "version": "1.0.0",
+  "type": "wordpress-theme",
+  "description": "noakirel starter theme with localization support.",
+  "keywords": [
+    "WordPress",
+    "Theme",
+    "Localization"
+  ],
+  "homepage": "https://github.com/Sanetchek/noakirel",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Contributors",
+      "homepage": "https://github.com/Sanetchek/noakirel/graphs/contributors"
+    }
+  ],
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "wp-cli/i18n-command": "^2.2.5"
+  },
+  "scripts": {
+    "make-pot": "wp i18n make-pot . languages/noakirel.pot"
+  },
+  "support": {
+    "issues": "https://github.com/Sanetchek/noakirel/issues",
+    "source": "https://github.com/Sanetchek/noakirel"
+  }
+}
