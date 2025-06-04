@@ -81,13 +81,13 @@ gulp.task('generate-fonts-css', (done) => {
       cssContent += `
 @font-face {
   font-family: '${baseName}';
-  src: url('../fonts/${file}') format('woff2');
+  src: url('../fonts/theme/${file}') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 `;
-      cssVariables += `  --font-${varName}: '${baseName}';\n`;
+      cssVariables += `  --font-${varName}: '${baseName}', sans-serif;\n`;
     }
   });
 

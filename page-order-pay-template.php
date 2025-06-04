@@ -12,7 +12,7 @@ $is_order_pay = isset( $wp->query_vars['order-pay'] );
 $is_order_received = strpos( $current_url, 'order-received' ) !== false;
 ?>
 
-<main id="main" class="custom-order">
+<div id="custom_order" class="custom-order">
 
   <?php if ( $is_order_pay ) : ?>
 
@@ -43,13 +43,13 @@ $is_order_received = strpos( $current_url, 'order-received' ) !== false;
     </div>
 
   <?php else : ?>
-    <main class="custom-checkout-template" dir="rtl">
+    <section class="custom-checkout-template" dir="rtl">
       <div class="woocommerce">
         <?php echo do_shortcode('[woocommerce_checkout]'); ?>
       </div>
-    </main>
+    </section>
   <?php endif; ?>
 
-</main>
+</div>
 
 <?php get_footer(); ?>

@@ -2,8 +2,6 @@
 /* Template Name: Front - Home */
 get_header(); ?>
 
-<main class="main-content">
-
   <?php
   $section = get_field('section_hero');
 
@@ -341,11 +339,5 @@ if ( $subscribe ) :
   <?php endif; ?>
 </section>
 <?php endif; ?>
-
-
-
-
-
-</main>
 
 <?php get_footer(); ?>

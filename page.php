@@ -12,26 +12,22 @@
 
 get_header(); ?>
 
-		<main id="main" class="page_wrapper" role="main">
-
-			<?php
-			while ( have_posts() ) :
-				the_post();
+<?php
+while ( have_posts() ) :
+	the_post();
 
 
-				get_template_part( 'content', 'page' );
+	get_template_part( 'content', 'page' );
 
-				/**
-				 * Functions hooked in to storefront_page_after action
-				 *
-				 * @hooked storefront_display_comments - 10
-				 */
-				do_action( 'storefront_page_after' );
+	/**
+	 * Functions hooked in to storefront_page_after action
+	 *
+	 * @hooked storefront_display_comments - 10
+	 */
+	do_action( 'storefront_page_after' );
 
-			endwhile; // End of the loop.
-			?>
-
-		</main>
+endwhile; // End of the loop.
+?>
 
 <?php
 get_footer();

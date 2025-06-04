@@ -32,6 +32,10 @@ require 'inc/storefront-functions.php';
 require 'inc/storefront-template-hooks.php';
 require 'inc/storefront-template-functions.php';
 require 'inc/wordpress-shims.php';
+require 'inc/custom-functions.php';
+require 'inc/woocommerce.php';
+require 'inc/acf.php';
+require 'inc/hooks.php';
 
 add_action( 'wp_enqueue_scripts', 'my_custom_assets', 20 );
 

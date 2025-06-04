@@ -7,32 +7,26 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<?php if ( have_posts() ) : ?>
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-						/* translators: %s: search term */
-						printf( esc_attr__( 'Search Results for: %s', 'noakirel' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
+	<header class="page-header">
+		<h1 class="page-title">
 			<?php
-			get_template_part( 'loop' );
+				/* translators: %s: search term */
+				printf( esc_attr__( 'Search Results for: %s', 'noakirel' ), '<span>' . get_search_query() . '</span>' );
+			?>
+		</h1>
+	</header><!-- .page-header -->
 
-		else :
+	<?php
+	get_template_part( 'loop' );
 
-			get_template_part( 'content', 'none' );
+else :
 
-		endif;
-		?>
+	get_template_part( 'content', 'none' );
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+endif;
+?>
 
 <?php
 do_action( 'storefront_sidebar' );

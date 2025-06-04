@@ -2,173 +2,171 @@
 /* Template Name: Front page */
 get_header(); ?>
 
-<main class="main-content">
+<?php
+$section = get_field('section_hero');
 
-  <?php
-  $section = get_field('section_hero');
-
-  if ( $section ) :
-    $images = $section['slider_image'];
-    $title = $section['title'];
-    $logo = $section['logo'];
-    $description = $section['description'];
-  ?>
-  <section class="signature_wrapper">
-    <div class="signature" data-aos="fade-right">
-      <div class="swiper signature-swiper">
-        <div class="swiper-wrapper">
-          <?php if ( $images ) :
-            foreach ( $images as $img ) : ?>
-              <div class="swiper-slide">
-                <img src="<?= esc_url( $img['url'] ) ?>" alt="<?= esc_attr( $img['alt'] ) ?>">
-              </div>
-          <?php endforeach; endif; ?>
-        </div>
-        <div class="swiper-pagination"></div>
+if ( $section ) :
+  $images = $section['slider_image'];
+  $title = $section['title'];
+  $logo = $section['logo'];
+  $description = $section['description'];
+?>
+<section class="signature_wrapper">
+  <div class="signature" data-aos="fade-right">
+    <div class="swiper signature-swiper">
+      <div class="swiper-wrapper">
+        <?php if ( $images ) :
+          foreach ( $images as $img ) : ?>
+            <div class="swiper-slide">
+              <img src="<?= esc_url( $img['url'] ) ?>" alt="<?= esc_attr( $img['alt'] ) ?>">
+            </div>
+        <?php endforeach; endif; ?>
       </div>
+      <div class="swiper-pagination"></div>
     </div>
+  </div>
 
-    <div class="signature_info" data-aos="fade-left">
-      <div class="signature_info_wrapper">
-        <?php if ( $title ) : ?>
-          <h1><?= esc_html( $title ) ?></h1>
-        <?php endif; ?>
-
-        <?php if ( $logo ) : ?>
-          <img src="<?= esc_url( $logo ) ?>" alt="logo" />
-        <?php endif; ?>
-
-        <?php if ( $description ) : ?>
-          <p><?= esc_html( $description ) ?></p>
-        <?php endif; ?>
-
-        <?php
-        $product_id = 77;
-        $product = wc_get_product($product_id);
-        echo sprintf(
-          '<a href="%s" data-quantity="1" class="btn_add add_to_cart_button ajax_add_to_cart" data-product_id="%s" data-product_sku="%s" aria-label="%s" rel="nofollow">%s</a>',
-          esc_url( $product->add_to_cart_url() ),
-          esc_attr( $product->get_id() ),
-          esc_attr( $product->get_sku() ),
-          esc_html( $product->add_to_cart_description() ),
-          'קנו עכשיו'
-        );
-        ?>
-      </div>
-    </div>
-  </section>
-  <?php endif; ?>
-
-
-
-  <?php
-  $video_group = get_field('section_video');
-  $video_url = $video_group['video'] ?? '';
-
-  if ( $video_url ) :
-  ?>
-  <section class="video">
-    <div class="video-wrapper">
-      <video autoplay muted loop playsinline>
-        <source src="<?= esc_url( $video_url ) ?>" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </section>
-  <?php endif; ?>
-
-
-  <?php
-  $perfume = get_field('section_perfume');
-
-  if ( $perfume ) :
-    $image = $perfume['main_image'];
-    $image_url = is_array($image) ? $image['url'] : $image;
-    $image_alt = is_array($image) && isset($image['alt']) ? $image['alt'] : 'perfume_wrapper';
-
-    $title = $perfume['title'];
-    $description = $perfume['description'];
-    $sub_description = $perfume['sub_description'];
-    $sub_title = $perfume['sub_title'];
-    $blocks = $perfume['block_info'];
-  ?>
-  <section class="perfume" id="SIGNATURE" data-aos="fade-right">
-    <div class="perfume_wrapper">
-      <?php if ( $image_url ) : ?>
-        <img src="<?= esc_url( $image_url ) ?>" alt="<?= esc_attr( $image_alt ) ?>">
+  <div class="signature_info" data-aos="fade-left">
+    <div class="signature_info_wrapper">
+      <?php if ( $title ) : ?>
+        <h1><?= esc_html( $title ) ?></h1>
       <?php endif; ?>
 
-      <div class="perfume_wrapper_info">
-        <?php if ( $title ) : ?>
-          <h2><?= esc_html( $title ) ?></h2>
-        <?php endif; ?>
+      <?php if ( $logo ) : ?>
+        <img src="<?= esc_url( $logo ) ?>" alt="logo" />
+      <?php endif; ?>
 
-        <?php if ( $description ) : ?>
-          <p><?= esc_html( $description ) ?></p>
-        <?php endif; ?>
+      <?php if ( $description ) : ?>
+        <p><?= esc_html( $description ) ?></p>
+      <?php endif; ?>
 
-        <?php if ( $sub_description ) : ?>
-          <span><?= esc_html( $sub_description ) ?></span>
-        <?php endif; ?>
-
-        <?php
-        $product_id = 77;
-        $product = wc_get_product($product_id);
-        echo sprintf(
-          '<a href="%s" data-product_id="%s" data-quantity="1" class="btn_add add_to_cart_button ajax_add_to_cart" data-product_sku="%s" aria-label="%s" rel="nofollow">%s</a>',
-          esc_url( $product->add_to_cart_url() ),
-          esc_attr( $product->get_id() ),
-          esc_attr( $product->get_sku() ),
-          esc_html( $product->add_to_cart_description() ),
-          'קנו עכשיו'
-        );
-        ?>
-      </div>
+      <?php
+      $product_id = 77;
+      $product = wc_get_product($product_id);
+      echo sprintf(
+        '<a href="%s" data-quantity="1" class="btn_add add_to_cart_button ajax_add_to_cart" data-product_id="%s" data-product_sku="%s" aria-label="%s" rel="nofollow">%s</a>',
+        esc_url( $product->add_to_cart_url() ),
+        esc_attr( $product->get_id() ),
+        esc_attr( $product->get_sku() ),
+        esc_html( $product->add_to_cart_description() ),
+        'קנו עכשיו'
+      );
+      ?>
     </div>
+  </div>
+</section>
+<?php endif; ?>
 
-    <?php if ( $sub_title || ! empty( $blocks ) ) : ?>
-      <div class="notes" data-aos="fade-left">
-        <?php if ( $sub_title ) : ?>
-          <h2><?= esc_html( $sub_title ) ?></h2>
-        <?php endif; ?>
 
-        <?php if ( $blocks ) : ?>
-          <div class="notes_blocks">
-            <?php foreach ( $blocks as $block ) : ?>
-              <div class="notes_blocks_block">
-                <?php if ( !empty($block['title']) ) : ?>
-                  <h3><?= esc_html( $block['title'] ) ?></h3>
-                <?php endif; ?>
-                <?php if ( !empty($block['description']) ) : ?>
-                  <p><?= esc_html( $block['description'] ) ?></p>
-                <?php endif; ?>
-              </div>
-            <?php endforeach; ?>
-          </div>
-        <?php endif; ?>
-      </div>
+
+<?php
+$video_group = get_field('section_video');
+$video_url = $video_group['video'] ?? '';
+
+if ( $video_url ) :
+?>
+<section class="video">
+  <div class="video-wrapper">
+    <video autoplay muted loop playsinline>
+      <source src="<?= esc_url( $video_url ) ?>" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+<?php endif; ?>
+
+
+<?php
+$perfume = get_field('section_perfume');
+
+if ( $perfume ) :
+  $image = $perfume['main_image'];
+  $image_url = is_array($image) ? $image['url'] : $image;
+  $image_alt = is_array($image) && isset($image['alt']) ? $image['alt'] : 'perfume_wrapper';
+
+  $title = $perfume['title'];
+  $description = $perfume['description'];
+  $sub_description = $perfume['sub_description'];
+  $sub_title = $perfume['sub_title'];
+  $blocks = $perfume['block_info'];
+?>
+<section class="perfume" id="SIGNATURE" data-aos="fade-right">
+  <div class="perfume_wrapper">
+    <?php if ( $image_url ) : ?>
+      <img src="<?= esc_url( $image_url ) ?>" alt="<?= esc_attr( $image_alt ) ?>">
     <?php endif; ?>
-  </section>
+
+    <div class="perfume_wrapper_info">
+      <?php if ( $title ) : ?>
+        <h2><?= esc_html( $title ) ?></h2>
+      <?php endif; ?>
+
+      <?php if ( $description ) : ?>
+        <p><?= esc_html( $description ) ?></p>
+      <?php endif; ?>
+
+      <?php if ( $sub_description ) : ?>
+        <span><?= esc_html( $sub_description ) ?></span>
+      <?php endif; ?>
+
+      <?php
+      $product_id = 77;
+      $product = wc_get_product($product_id);
+      echo sprintf(
+        '<a href="%s" data-product_id="%s" data-quantity="1" class="btn_add add_to_cart_button ajax_add_to_cart" data-product_sku="%s" aria-label="%s" rel="nofollow">%s</a>',
+        esc_url( $product->add_to_cart_url() ),
+        esc_attr( $product->get_id() ),
+        esc_attr( $product->get_sku() ),
+        esc_html( $product->add_to_cart_description() ),
+        'קנו עכשיו'
+      );
+      ?>
+    </div>
+  </div>
+
+  <?php if ( $sub_title || ! empty( $blocks ) ) : ?>
+    <div class="notes" data-aos="fade-left">
+      <?php if ( $sub_title ) : ?>
+        <h2><?= esc_html( $sub_title ) ?></h2>
+      <?php endif; ?>
+
+      <?php if ( $blocks ) : ?>
+        <div class="notes_blocks">
+          <?php foreach ( $blocks as $block ) : ?>
+            <div class="notes_blocks_block">
+              <?php if ( !empty($block['title']) ) : ?>
+                <h3><?= esc_html( $block['title'] ) ?></h3>
+              <?php endif; ?>
+              <?php if ( !empty($block['description']) ) : ?>
+                <p><?= esc_html( $block['description'] ) ?></p>
+              <?php endif; ?>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
+    </div>
   <?php endif; ?>
+</section>
+<?php endif; ?>
 
 
 
-  <?php
-  $banner_field = get_field('section_banner');
-  $banner_image = $banner_field['banner'] ?? '';
+<?php
+$banner_field = get_field('section_banner');
+$banner_image = $banner_field['banner'] ?? '';
 
-  $banner_url = is_array($banner_image) ? $banner_image['url'] : $banner_image;
-  $banner_alt = is_array($banner_image) && !empty($banner_image['alt']) ? $banner_image['alt'] : 'banner';
+$banner_url = is_array($banner_image) ? $banner_image['url'] : $banner_image;
+$banner_alt = is_array($banner_image) && !empty($banner_image['alt']) ? $banner_image['alt'] : 'banner';
 
-  if ( $banner_url ) :
-  ?>
-  <section class="banner">
-    <img src="<?= esc_url( $banner_url ) ?>" alt="<?= esc_attr( $banner_alt ) ?>">
-  </section>
-  <?php endif; ?>
+if ( $banner_url ) :
+?>
+<section class="banner">
+  <img src="<?= esc_url( $banner_url ) ?>" alt="<?= esc_attr( $banner_alt ) ?>">
+</section>
+<?php endif; ?>
 
 
-  <?php
+<?php
 $about = get_field('section_about');
 
 if ( $about ) :
@@ -292,10 +290,5 @@ if ( $subscribe ) :
 </section>
 <?php endif; ?>
 
-
-
-
-
-</main>
 
 <?php get_footer(); ?>

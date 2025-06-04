@@ -1,3 +1,7 @@
 :root {
-  --color-grey: #F8F8F8;
+  --red: #2d0009;
+  --white: #fff;
+  --grey: #333;
+
+  --header-height: 70px;
 }
