@@ -72,7 +72,32 @@ function my_custom_assets() {
 		wp_enqueue_style( 'checkout-style', get_stylesheet_directory_uri() . '/assets/css/checkout-style.css', array(), '1.0', 'all' );
 	}
 
-	wp_enqueue_style( 'noakirel-custom-style', get_stylesheet_directory_uri() . '/assets/css/noakirel-styles.css', array(), '1.0', 'all' );
+	// Noakirel Styles (LTR or RTL)
+	if ( is_rtl() ) {
+		wp_enqueue_style(
+			'noakirel-custom-style-rtl',
+			get_stylesheet_directory_uri() . '/assets/css/noakirel-styles-rtl.css',
+			array(),
+			'1.0',
+			'all'
+		);
+	} else {
+		wp_enqueue_style(
+			'noakirel-custom-style',
+			get_stylesheet_directory_uri() . '/assets/css/noakirel-styles.css',
+			array(),
+			'1.0',
+			'all'
+		);
+	}
+
+	wp_enqueue_script(
+		'noakirel-scripts',
+		get_template_directory_uri() . '/assets/js/scripts.min.js',
+		array( 'jquery', 'swiper-js' ),
+		'1.0',
+		true
+	);
 }
 
 add_action( 'wp_ajax_woocommerce_apply_coupon', 'custom_apply_coupon' );

@@ -92,7 +92,7 @@ get_header(); ?>
     $sub_title = $perfume['sub_title'];
     $blocks = $perfume['block_info'];
   ?>
-  <section class="perfume"  id="SIGNATURE" data-aos="fade-right">
+  <section class="perfume" id="SIGNATURE" data-aos="fade-right">
     <div class="perfume_wrapper">
       <?php if ( $image_url ) : ?>
         <img src="<?= esc_url( $image_url ) ?>" alt="<?= esc_attr( $image_alt ) ?>">

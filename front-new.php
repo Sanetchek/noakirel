@@ -92,6 +92,9 @@ get_header(); ?>
   <?php
   $perfume = get_field('section_perfume');
 
+  $cust_img = get_field('custom_image_for_test');
+  echo wp_get_attachment_image($cust_img);
+
   if ( $perfume ) :
     $image = $perfume['main_image'];
     $image_url = is_array($image) ? $image['url'] : $image;
