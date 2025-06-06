@@ -1,0 +1,643 @@
+@media screen and (max-width: 1200px) {
+  .container {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  ul.header-menu a {
+    font-size: 14px;
+    padding: 7px 15px;
+  }
+
+  .footer_wrapper_info {
+    flex-wrap: wrap;
+  }
+
+  .footer_wrapper_info_logo {
+    max-width: unset;
+    width: 50%;
+    padding: 30px 0 67px 20px;
+  }
+
+  .footer_wrapper_info_links {
+    max-width: unset;
+    width: 50%;
+    padding: 102px 0 67px;
+  }
+
+  .footer_wrapper_info>div::nth-child(2) {
+    border-right: initial;
+  }
+
+  .footer_wrapper_info>div::nth-child(2),
+  .footer_wrapper_info>div::nth-child(4) {
+    border-right: 1px solid rgba(45, 0, 9, 0.3) !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .site-header {
+    height: auto;
+  }
+
+  .header-inner {
+    height: auto;
+    min-height: 70px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .header-inner-desktop a.header-logo {
+    position: relative;
+    top: unset;
+    left: unset;
+    transform: unset;
+  }
+
+  nav.header-menu-wrapper {
+    width: 100%;
+    order: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  .site-header {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+  }
+
+  .header-actions>#mini_cart,
+  .header-actions>a {
+    border-left: 0;
+  }
+
+  .reviews_wrapper_block {
+    min-height: 300px !important;
+  }
+
+  .custom-order-pay-card-wrapper {
+    padding: 20px 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    max-width: 400px;
+  }
+
+  body .ins-cart-item-quantity button svg {
+    width: 21px !important;
+  }
+
+  .custom-order-pay-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url(https://noakirel.co/wp-content/uploads/2025/05/Vector.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  .custom-order-pay-card img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .custom-order-pay-card-list {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: -25px;
+  }
+
+  .custom-order-pay-card-list li {
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    color: var(--GREY, #333);
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 17.5px;
+    /* 116.667% */
+    text-transform: capitalize;
+  }
+
+  .custom-order-pay-card-list li strong {
+    color: var(--GREY, #333);
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17.5px;
+    /* 125% */
+    text-transform: capitalize;
+  }
+
+  .site-header {
+    margin-bottom: 0px !important;
+  }
+
+  .site-header .cart_home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    top: 5px;
+    left: 36px;
+    width: 100%;
+  }
+
+  .site-header .cart_home #mini_cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    position: absolute;
+    top: 50%;
+    left: 36px;
+    transform: translateY(-50%);
+  }
+
+  .main-menu-wrapper.active {
+    display: table;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    left: 0;
+    top: 45px;
+    right: 0;
+    bottom: 0;
+    background: white;
+  }
+
+  .main-menu-wrapper ul {
+    gap: 30px;
+  }
+
+  .main-content {
+    background: url(/wp-content/uploads/2025/04/Firefly-20250430153301-1.png);
+    background-repeat: no-repeat;
+    background-size: 77%;
+    background-position: -70% 0%;
+  }
+
+  .signature .swiper-slide img {
+    max-width: 250px;
+  }
+
+  .signature-swiper:before {
+    position: absolute;
+    content: "";
+    width: 45px;
+    height: 45px;
+    background: url(/wp-content/uploads/2025/04/2-1.png);
+    bottom: 50px;
+    right: 140px;
+    z-index: 11;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .signature_wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    flex-direction: column;
+  }
+
+
+
+  .hamburger-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #000;
+    transition: all 0.3s ease;
+  }
+
+  .signature_info h1 {
+    color: #890009;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    /* 150% */
+  }
+
+  .signature_info_wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-direction: column;
+  }
+
+  .signature_info_wrapper svg {
+    max-width: 100px;
+  }
+
+  .signature_info p {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    max-width: 320px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    text-transform: capitalize;
+  }
+
+  .signature_info .btn_add {
+    margin-bottom: 30px !important;
+    display: block;
+  }
+
+  button {
+    outline: none !important;
+  }
+
+  .perfume_wrapper {
+    padding: 50px 20px 40px;
+    flex-direction: column;
+  }
+
+  .perfume_wrapper_info h2 {
+    color: #890009;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    /* 150% */
+    margin-bottom: 8px;
+  }
+
+  .perfume_wrapper_info p {
+    color: #000;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 171.429% */
+    text-transform: capitalize;
+    margin-bottom: 5px;
+  }
+
+  .perfume_wrapper_info span {
+    color: var(--Gray-3, #828282);
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    /* 207.143% */
+    text-transform: capitalize;
+    margin-bottom: 10px;
+  }
+
+  .perfume_wrapper_info a {
+    color: var(--dark);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 13.735px;
+    letter-spacing: 0.673px;
+    max-width: 143px;
+    margin-right: initial;
+  }
+
+  .notes h2 {
+    color: #890009;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    /* 150% */
+    margin-bottom: 20px;
+  }
+
+  .notes_blocks {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .notes_blocks_block {
+    border: none;
+    background: transparent;
+    padding: 20px 40px;
+    max-width: 270px;
+    min-height: auto;
+  }
+
+  .about_wrapper {
+    flex-direction: column;
+  }
+
+  .about_wrapper h2 {
+    color: #890009;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    /* 150% */
+    margin-bottom: 10px;
+  }
+
+  .about_wrapper p {
+    color: #000;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 171.429% */
+    text-transform: capitalize;
+    margin-bottom: 40px;
+  }
+
+  .about {
+    padding: 40px;
+  }
+
+  .reviews h2 {
+    padding: 32px 20px;
+    color: #890009;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    /* 150% */
+  }
+
+  .subscribe h2 {
+    font-size: 20px;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+
+  #mailpoet_form_1 form {
+    flex-direction: column;
+    max-width: 300px;
+  }
+
+  #mailpoet_form_1 input[type="submit"] {
+    margin-top: 15px;
+    max-width: 300px;
+  }
+
+  .subscribe {
+    padding: 0 0 30px;
+  }
+
+  body .ins-cart-btns a,
+  body .ins-cart-btns button,
+  body .ins-mobie-bar_icon {
+    background: #890009 !important;
+    border: none !important;
+  }
+
+  body .ins-cart-btns a:hover,
+  body .ins-cart-btns button:hover {
+    background-color: #890009 !important;
+    color: #FCF9F7 !important;
+    border-color: #890009 !important;
+  }
+
+  #masthead.is-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 !important;
+  }
+
+  #masthead.is-sticky .cart {
+    position: absolute;
+    top: 20px;
+    left: 0;
+  }
+
+  body .ins-cart-collaterals .cart_totals td,
+  .ins-cart-collaterals .cart_totals th {
+    display: flex !important;
+  }
+
+  body table.shop_table_responsive tr td[data-title]::before {
+    font-size: 0 !important;
+  }
+
+  .signature_info_wrapper_block {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .signature_info_wrapper_block img {
+    width: 100%;
+    max-width: 80px;
+  }
+
+  .signature_info_wrapper_block h1 {
+    margin: 0;
+  }
+
+  body .ins-cart-empty span::before {
+    background: url(/wp-content/uploads/2025/05/Packshot-2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 0;
+    width: 100%;
+    height: 200px;
+    margin: 0;
+    mask-size: initial;
+    mask-image: none;
+    background-position: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-menu-wrapper {
+    display: none;
+  }
+
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .main-menu-wrapper ul .logo {
+    display: none;
+  }
+
+  .logo_mobile {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: -25px;
+    width: 100%;
+    max-width: 50px;
+  }
+
+  .footer_wrapper_info {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 0;
+  }
+
+  .footer_wrapper_info_logo,
+  .footer_wrapper_info_links {
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .footer_wrapper_info_logo p {
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .footer_wrapper_info_logo_social {
+    justify-content: center;
+  }
+
+  .btn_add {
+    margin: 0 auto;
+  }
+
+  .footer_wrapper_info_links h2 {
+    text-align: center;
+  }
+
+  .footer-menu {
+    align-items: center;
+  }
+
+  .footer-menu li a {
+    text-align: center;
+  }
+
+  .form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0px;
+  }
+
+  .form input {
+    max-width: 100%;
+  }
+
+  .footer_wrapper_copyright {
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer_wrapper_payment {
+    position: relative;
+    top: unset;
+    transform: unset;
+    right: unset;
+  }
+
+  .thankyou-card {
+    padding: 40px 20px;
+  }
+
+  .thankyou-card .thankyou-title {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 20px;
+  }
+
+  .thankyou-card .thankyou-text,
+  .thankyou-card .thankyou-text strong,
+  .thankyou-card a {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 20px;
+  }
+
+  .thankyou-card a {
+    text-underline-offset: 2px;
+  }
+
+  .page_wrapper {
+    padding: 30px 15px;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .page_wrapper h1 {
+    font-size: 28px;
+  }
+
+  .page_wrapper h2 {
+    font-size: 24px;
+  }
+
+  .page_wrapper h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home2-product-list .home2-product-image {
+    max-height: unset;
+    height: auto;
+  }
+
+  .home2-subscription-form form.wpcf7-form {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .home2-subscription-form span.wpcf7-form-control-wrap,
+  .home2-subscription-form .wpcf7-submit {
+    width: 100%;
+  }
+}

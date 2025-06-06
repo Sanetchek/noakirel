@@ -42,5 +42,40 @@ add_action('wp_footer', 'add_whatsapp_link_to_footer');
  * Replace the default icon with a custom one
  */
 add_filter('ins_get_svg_icon_pro', function($svg) {
-  return '<svg class="header-cart-icon" width="26" height="26" role="img" aria-label="Cart icon"><use href="' . esc_url(sprite('cart')) . '"></use></svg>';
+  return '<svg class="header-cart-icon" width="26" height="26" fill="currentColor" role="img" aria-label="Cart icon"><use href="' . esc_url(sprite('cart')) . '"></use></svg>';
 });
+
+/**
+ * Prints out the mobile menu modal.
+ *
+ * @param string $id The ID for the modal element. Defaults to `mobile-menu`.
+ * @param string $content The content to be printed out inside the modal. Defaults to the output of the `wp_nav_menu` function.
+ *
+ * @since 1.0.0
+ */
+function mobile_menu_modal() {
+  ?>
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-content">
+      <nav>
+        <?php
+        wp_nav_menu([
+          'menu' => 'Main menu',
+          'container' => false,
+          'menu_class' => 'mobile-header-menu',
+          'menu_id' => 'mobile-main-menu',
+          'fallback_cb' => false,
+        ]);
+        ?>
+      </nav8>
+    </div>
+  </div>
+  <?php
+}
+add_action('wp_footer', 'mobile_menu_modal');
+
+/**
+ * Disable automatic line breaks in contact form 7
+ */
+add_filter('wpcf7_autop_or_not', '__return_false');

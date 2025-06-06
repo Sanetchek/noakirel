@@ -39,7 +39,21 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                             <input id="payment_method_<?php echo esc_attr( $gateway->id ); ?>" type="radio" class="input-radio payment_method_radio payment_method_<?php echo esc_attr( $gateway->id ); ?>" name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?> data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
 
                             <label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>">
-                                <?php echo $gateway->get_title(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?> <?php echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
+                                <?php echo $gateway->get_title(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
+
+                                <?php if ($gateway->id === 'tranzila') : ?>
+                                    <?php $payment_methods = get_field('footer_payments_method', 'option'); ?>
+                                    <?php if ($payment_methods) : ?>
+                                        <div class="tranzila_wrapper_payment">
+                                            <?php foreach ($payment_methods as $payment_method) : ?>
+                                                <?php echo liteimage($payment_method['image'], [
+                                                    'thumb' => [0, 16],
+                                                ]); ?>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif ?>
+                                <?php endif ?>
+                                <?php echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
                             </label>
                         </li>
                     <?php endforeach;

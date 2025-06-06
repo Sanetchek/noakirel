@@ -28,8 +28,10 @@
 <div id="page" class="hfeed site">
 	<?php do_action('storefront_before_header'); ?>
 
-	<header id="masthead" class="site-header" role="banner" style="<?php storefront_header_styles(); ?>">
+	<?php $masterhead_class = wp_is_mobile() ? 'header-inner-mobile' : 'header-inner-desktop'; ?>
+	<header id="masthead" class="site-header <?php echo $masterhead_class; ?>" role="banner" style="<?php storefront_header_styles(); ?>">
 		<div class="container">
+
 			<div class="header-inner">
 				<?php if (wp_is_mobile()) : ?>
 					<?php
@@ -52,21 +54,7 @@
 				<?php endif; ?>
 
 				<div class="header-actions">
-					<a href="#" class="header-search" aria-label="Search the site">
-						<svg class="header-search-icon" width="22" height="22" role="img" aria-label="Search icon">
-							<use href="<?php echo esc_url(sprite('search')); ?>"></use>
-						</svg>
-					</a>
-					<a href="/favorites" class="header-favorites" aria-label="View favorites">
-						<svg class="header-favorites-icon" width="24" height="20" role="img" aria-label="Favorites icon">
-							<use href="<?php echo esc_url(sprite('heart')); ?>"></use>
-						</svg>
-					</a>
-					<a href="/my-account" class="header-profile" aria-label="View user profile">
-						<svg class="header-profile-icon" width="24" height="20" role="img" aria-label="Profile icon">
-							<use href="<?php echo esc_url(sprite('user')); ?>"></use>
-						</svg>
-					</a>
+					<?php show_header_links( false ); ?>
 					<?php echo do_shortcode('[instantio-cart-icon]'); ?>
 				</div>
 			</div>

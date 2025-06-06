@@ -570,9 +570,9 @@ ul.checkout-payment-methods li label,
   margin: 0;
 }
 
-ul.checkout-payment-methods li label img,
-#customer_details ul#shipping_method li label img {
-  max-height: 25px;
+.tranzila_wrapper_payment {
+  display: flex;
+  gap: 6px;
 }
 
 .checkout-payment-methods-wrapper h2,

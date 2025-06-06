@@ -568,7 +568,7 @@ ul.checkout-payment-methods li label,
 
 ul.checkout-payment-methods li label img,
 #customer_details ul#shipping_method li label img {
-  max-height: 25px;
+  max-height: 16px;
 }
 
 .checkout-payment-methods-wrapper h2,

@@ -90,9 +90,6 @@ get_header(); ?>
   <?php
   $perfume = get_field('section_perfume');
 
-  $cust_img = get_field('custom_image_for_test');
-  echo wp_get_attachment_image($cust_img);
-
   if ( $perfume ) :
     $image = $perfume['main_image'];
     $image_url = is_array($image) ? $image['url'] : $image;
@@ -322,22 +319,20 @@ if ( $reviews ) :
 
 
 
-<?php
-$subscribe = get_field('section_subscribe');
+<section id="home2_subscription" class="home2-subscription container">
+  <?php $title = get_field('subscription_title', 'option'); ?>
+  <?php if ($title) : ?>
+    <h2 class="home2-subscription-title home2-title"><?= esc_html($title) ?></h2>
+  <?php else : ?>
+    <h2 class="hidden-for-users sr-only"><?= __('Subscribe', 'noakirel') ?></h2>
+  <?php endif ?>
 
-if ( $subscribe ) :
-  $title = $subscribe['title'];
-  $form_shortcode = $subscribe['form'];
-?>
-<section class="subscribe" id="four" data-aos="fade-right">
-  <?php if ( $title ) : ?>
-    <h2><?= esc_html( $title ) ?></h2>
-  <?php endif; ?>
-
-  <?php if ( $form_shortcode ) : ?>
-    <?= do_shortcode( $form_shortcode ) ?>
-  <?php endif; ?>
+  <?php $form_subscription = get_field('subscription_form_short_code', 'option'); ?>
+  <?php if ($form_subscription) : ?>
+    <div class="home2-subscription-form">
+      <?php echo do_shortcode($form_subscription); ?>
+    </div>
+  <?php endif ?>
 </section>
-<?php endif; ?>
 
 <?php get_footer(); ?>

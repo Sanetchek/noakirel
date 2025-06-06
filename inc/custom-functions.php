@@ -94,3 +94,119 @@ function show_burger_menu() {
 	</button>
 	<?php
 }
+
+/**
+ * Outputs links to the site search, favorites, and user profile pages.
+ *
+ * @param bool $is_show Whether to show the links. Defaults to false.
+ */
+function show_header_links($is_show = false) {
+	if (!$is_show) return;
+	?>
+	<a href="#" class="header-search" aria-label="Search the site">
+		<svg class="header-search-icon" width="22" height="22" role="img" aria-label="Search icon">
+			<use href="<?php echo esc_url(sprite('search')); ?>"></use>
+		</svg>
+	</a>
+	<a href="/favorites" class="header-favorites" aria-label="View favorites">
+		<svg class="header-favorites-icon" width="24" height="20" role="img" aria-label="Favorites icon">
+			<use href="<?php echo esc_url(sprite('heart')); ?>"></use>
+		</svg>
+	</a>
+	<a href="/my-account" class="header-profile" aria-label="View user profile">
+		<svg class="header-profile-icon" width="24" height="20" role="img" aria-label="Profile icon">
+			<use href="<?php echo esc_url(sprite('user')); ?>"></use>
+		</svg>
+	</a>
+	<?php
+}
+
+/**
+ * Renders a link to a product's thumbnail image.
+ *
+ * The function takes a product ID as its argument and returns an HTML string
+ * containing a link to the product's thumbnail image. The link is wrapped in an
+ * anchor element with the class `product-thumb-wrapper`.
+ *
+ * If the product has a thumbnail image, it is displayed as the first image in
+ * the link. If the product has additional gallery images, the first gallery
+ * image is displayed as the second image in the link, which is displayed when
+ * the user hovers over the link.
+ *
+ * @param int $product_id The ID of the product to render the thumbnail link for.
+ * @return string The HTML string containing the link to the product's thumbnail
+ *                image.
+ */
+function render_product_thumbnail_link( $product_id, $thumb = [0, 370] ) {
+	if ( ! $product_id ) return;
+
+	$product = wc_get_product( $product_id );
+	if ( ! $product ) return;
+
+	$thumbnail_id = $product->get_image_id();
+	$gallery_ids = $product->get_gallery_image_ids();
+	$product_name = $product->get_name();
+
+	ob_start(); ?>
+	<a
+		href="<?php echo esc_url( get_permalink( $product_id ) ); ?>"
+		class="product-thumb-wrapper"
+		aria-label="<?php echo esc_attr( $product_name ); ?>"
+	>
+		<?php if ( $thumbnail_id ) : ?>
+			<?php echo liteimage( $thumbnail_id, [
+				'thumb' => $thumb,
+				'args'  => [ 'class' => 'product-thumb-first' ],
+			] ); ?>
+		<?php else : ?>
+			<img
+				src="<?php echo esc_url( wc_placeholder_img_src() ); ?>"
+				alt="<?php echo esc_attr( $product_name ); ?>"
+				class="product-thumb-first"
+			/>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $gallery_ids ) ) : ?>
+			<?php echo liteimage( $gallery_ids[0], [
+				'thumb' => $thumb,
+				'max'   => [ '375' => [420, 0] ],
+				'args'  => [ 'class' => 'product-thumb-hovered' ],
+			] ); ?>
+		<?php endif; ?>
+	</a>
+	<?php
+	return ob_get_clean();
+}
+
+/**
+ * Renders an HTML string for a product item in the homepage template.
+ *
+ * The function takes a product ID as its argument and returns an HTML string
+ * containing a product item element with a thumbnail image, title, and price.
+ *
+ * @param int $product_id The ID of the product to render the item for.
+ * @return string The HTML string containing the product item element.
+ */
+function render_home2_product_item( $product_id, $thumb = [0, 370] ) {
+	if ( ! $product_id ) return;
+
+	$product = wc_get_product( $product_id );
+	if ( ! $product ) return;
+
+	ob_start(); ?>
+	<div class="home2-product-item">
+		<div class="home2-product-image">
+			<?php echo render_product_thumbnail_link( $product_id, $thumb ); ?>
+		</div>
+		<h3 class="home2-product-title">
+			<a href="<?php echo esc_url( get_permalink( $product_id ) ); ?>">
+				<?php echo esc_html( $product->get_name() ); ?>
+			</a>
+		</h3>
+		<div class="home2-product-price">
+			<?php echo $product->get_price_html(); ?>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+}

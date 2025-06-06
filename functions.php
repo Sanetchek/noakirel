@@ -559,3 +559,39 @@ function custom_clean_checkout_fields( $fields ) {
 
 
 add_filter( 'woocommerce_checkout_blocks_enabled', '__return_false' );
+
+
+add_action('woocommerce_thankyou', 'custom_debug_purchase_event', 10, 1);
+function custom_debug_purchase_event($order_id) {
+	if (!$order_id) return;
+	$order = wc_get_order($order_id);
+	if (!$order) return;
+
+	$items = [];
+	foreach ($order->get_items() as $item) {
+		$product = $item->get_product();
+		$items[] = [
+			'item_name' => $item->get_name(),
+			'item_id'   => $product ? $product->get_sku() : '',
+			'price'     => $order->get_line_subtotal($item),
+			'quantity'  => $item->get_quantity(),
+		];
+	}
+
+	echo "\n<!-- Pushing purchase event manually via PHP -->\n";
+	?>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		window.dataLayer.push({
+				event: "purchase",
+				ecommerce: {
+						transaction_id: "<?php echo esc_js($order->get_order_number()); ?>",
+						affiliation: "WooCommerce",
+						value: <?php echo esc_js($order->get_total()); ?>,
+						currency: "<?php echo esc_js($order->get_currency()); ?>",
+						items: <?php echo json_encode($items); ?>
+				}
+		});
+	</script>
+<?php
+}
