@@ -21,8 +21,12 @@ if ( ! $order ) return;
         <a href="<?php echo home_url(); ?>" class="thankyou-link">
             חזרה לדף הבית
         </a>
-
-
-
     </div>
 </div>
+
+<?php
+$subtotal = $order->get_subtotal(); // Product subtotal minus discounts
+$total = $subtotal / 1.18;
+$extID = $order->get_id();
+?>
+<script type="text/javascript" src="https://track.wesell.co.il/conversionFirstParty/6n0AKLFgU18/oKo6kK9jnMw/json?total=<?php echo esc_js($total); ?>&extID=<?php echo esc_js($extID); ?>"></script>

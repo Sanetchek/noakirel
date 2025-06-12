@@ -59,20 +59,4 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters('active_plugins', ge
   add_action('woocommerce_checkout_after_customer_details', function() {
     echo do_shortcode('[contact-form-7 id="5a61448" title="Checkout mail list"]');
   });
-
-  /**
-   * Add conversion script to thank you page.
-   *
-   * @param int $order_id The order ID.
-   */
-  function add_conversion_script_to_thankyou_page($order_id) {
-    $order = wc_get_order($order_id);
-    $subtotal = $order->get_subtotal() - $order->get_total_discount(); // Product subtotal minus discounts
-    $total = $subtotal / 1.8; // Divide subtotal by 1.8
-    $extID = $order_id; // Order ID
-    ?>
-    <script type="text/javascript" src="https://track.wesell.co.il/conversionFirstParty/6n0AKLFgU18/oKo6kK9jnMw/json?total=<?php echo esc_js($total); ?>&extID=<?php echo esc_js($extID); ?>"></script>
-    <?php
-  }
-  add_action('woocommerce_thankyou', 'add_conversion_script_to_thankyou_page');
 }
