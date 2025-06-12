@@ -162,13 +162,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                     <div id="payment" class="woocommerce-checkout-payment-wrapper">
                         <div class="form-row place-order">
                             <p class="form-row">
-                                <!-- <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                                <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="confirm_mailing_updates" id="confirm_mailing_updates" value="1">
+                                <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                    <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="confirm_mailing_updates" id="confirm_mailing_updates" value="1">
                                     <span class="woocommerce-confirm-mailing-updates-checkbox-text"><?php echo __('מאשר רישום לקבלת דיוור ועדכונים', 'noakirel') ?></span>
-                                </label> -->
-
+                                </label>
                             </p>
-
 
                             <noscript>
                                 <?php

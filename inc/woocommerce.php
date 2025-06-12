@@ -54,9 +54,4 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters('active_plugins', ge
   }
   add_action('wp_ajax_update_cart_quantity', 'custom_update_cart_quantity');
   add_action('wp_ajax_nopriv_update_cart_quantity', 'custom_update_cart_quantity');
-
-  // Add contact form to checkout
-  add_action('woocommerce_checkout_after_customer_details', function() {
-    echo do_shortcode('[contact-form-7 id="5a61448" title="Checkout mail list"]');
-  });
 }
