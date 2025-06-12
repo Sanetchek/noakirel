@@ -2,12 +2,13 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .swiper-pagination {
   position: initial !important;
   gap: 6px;
+  height: 12px;
 }
 
 .swiper-pagination span.swiper-pagination-bullet {
@@ -62,7 +63,7 @@
 }
 
 .hero2-link {
-  margin-top: 43px;
+  margin-top: 36px;
 }
 
 .btn-link {
@@ -91,7 +92,8 @@
 }
 
 .home2-hero-media .video-wrapper {
-  height: 1060px;
+  height: calc(100vh - 90px);
+  min-height: 720px;
 }
 
 .home2-flavor {

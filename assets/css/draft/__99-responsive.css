@@ -1,3 +1,19 @@
+@media screen and (max-width: 1600px) {
+  .hero2-title-image img {
+    height: 90px;
+  }
+
+  .hero2-gallery-item img {
+    width: auto;
+    max-height: 340px;
+  }
+
+  .home2-hero-media .video-wrapper {
+    height: calc(100vh - 200px);
+    min-height: 610px;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .container {
     padding-right: 30px;
@@ -179,11 +195,22 @@
     gap: 30px;
   }
 
-  .main-content {
+  .front_wrapper {
     background: url(/wp-content/uploads/2025/04/Firefly-20250430153301-1.png);
     background-repeat: no-repeat;
     background-size: 77%;
     background-position: -70% 0%;
+  }
+
+  .hero2-title-image img {
+    max-width: 90%;
+    width: auto;
+    height: auto;
+  }
+
+  .hero2-gallery-item img {
+    width: auto;
+    max-height: unset;
   }
 
   .signature .swiper-slide img {
@@ -485,6 +512,28 @@
     mask-image: none;
     background-position: center;
   }
+
+  .two-columns .column-side.noa-single-summary,
+  .two-columns .column-side.noa-single-images {
+    max-width: unset;
+    width: 100%;
+  }
+
+  .home2-hero-media .video-wrapper {
+    height: auto;
+    min-height: unset;
+    padding: 0;
+  }
+
+  .video-wrapper video {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 768px) {
@@ -639,5 +688,10 @@
   .home2-subscription-form span.wpcf7-form-control-wrap,
   .home2-subscription-form .wpcf7-submit {
     width: 100%;
+  }
+
+  .home2-hero {
+    padding-right: 0;
+    padding-left: 0;
   }
 }

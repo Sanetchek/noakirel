@@ -156,7 +156,10 @@ function render_product_thumbnail_link( $product_id, $thumb = [0, 370] ) {
 		<?php if ( $thumbnail_id ) : ?>
 			<?php echo liteimage( $thumbnail_id, [
 				'thumb' => $thumb,
-				'args'  => [ 'class' => 'product-thumb-first' ],
+				'args'  => [
+					'class' => 'product-thumb-first',
+					'loading' => 'eager',
+				],
 			] ); ?>
 		<?php else : ?>
 			<img
@@ -169,7 +172,6 @@ function render_product_thumbnail_link( $product_id, $thumb = [0, 370] ) {
 		<?php if ( ! empty( $gallery_ids ) ) : ?>
 			<?php echo liteimage( $gallery_ids[0], [
 				'thumb' => $thumb,
-				'max'   => [ '375' => [420, 0] ],
 				'args'  => [ 'class' => 'product-thumb-hovered' ],
 			] ); ?>
 		<?php endif; ?>
@@ -209,4 +211,54 @@ function render_home2_product_item( $product_id, $thumb = [0, 370] ) {
 	</div>
 	<?php
 	return ob_get_clean();
+}
+
+/**
+ * Renders an accordion element for a product page.
+ *
+ * The function takes an array of items as its argument and returns an HTML string
+ * containing an accordion element with a title and content for each item in the
+ * array. The first item in the array is expanded by default.
+ *
+ * @param array $list An array of items to render in the accordion.
+ * @return string The HTML string containing the accordion element.
+ */
+function display_product_accordion($list) {
+	ob_start(); // Start output buffering
+
+	if ($list) :
+	?>
+		<div class="accordion" role="presentation">
+			<?php foreach ($list as $key => $item) : ?>
+				<?php $first = ($key === 0); ?>
+				<div class="accordion-item <?php echo $first ? 'active' : ''; ?>" role="region">
+					<button class="accordion-title"
+							aria-expanded="<?php echo $first ? 'true' : 'false'; ?>"
+							aria-controls="accordion-content-<?php echo sanitize_title($item['title']); ?>">
+						<span class="accordion-title-text"><?= esc_html($item['title']) ?></span>
+						<span class="accordion-icon-plus">
+							<svg class="accordion-icon" width="12" height="12" role="img" aria-label="<?php echo esc_attr__('Expansion Icon', 'noakirel'); ?>">
+								<use href="<?php echo esc_url(sprite('plus')); ?>"></use>
+							</svg>
+						</span>
+						<span class="accordion-icon-minus">
+							<svg class="accordion-icon" width="12" height="12" role="img" aria-label="<?php echo esc_attr__('Close Icon', 'noakirel'); ?>">
+								<use href="<?php echo esc_url(sprite('minus')); ?>"></use>
+							</svg>
+						</span>
+					</button>
+					<div class="accordion-content"
+							id="accordion-content-<?php echo sanitize_title($item['title']); ?>"
+							role="region"
+							aria-hidden="<?php echo $first ? 'false' : 'true'; ?>">
+						<p><?= $item['text'] ?></p>
+					</div>
+				</div>
+				<?php
+			endforeach; ?>
+		</div>
+	<?php
+	endif;
+
+	return ob_get_clean(); // Return the buffered output
 }

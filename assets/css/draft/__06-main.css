@@ -65,13 +65,6 @@ a.view-cart.active {
   justify-content: center;
 }
 
-.custom-order {
-  padding: 50px 0;
-  width: 100%;
-  max-width: 1240px;
-  margin: auto;
-}
-
 #masthead.is-sticky {
   position: fixed;
   top: 0;
@@ -488,6 +481,11 @@ button.menu-toggle::before {
 
 .main-content {
   padding-top: 14px;
+}
+
+.front_wrapper {
+  background-image: url(http://noakirel.loc/wp-content/uploads/2025/04/Firefly-20250430153301-1.png);
+  background-repeat: no-repeat;
 }
 
 .video-wrapper {
@@ -975,11 +973,8 @@ body .ins-checkout-steps-wrap {
 }
 
 .woocommerce-Price-amount bdi {
-  display: inline-flex;
-  justify-content: center;
   max-width: max-content;
-  flex-direction: row-reverse;
-  gap: 4px;
+  direction: rtl;
 }
 
 .shipping #shipping_method label[for^="shipping_method_0_flat_rate"] bdi {
@@ -1542,4 +1537,203 @@ body .ins-single-step .ins-step-icon {
   font-size: 20px;
   color: #111111;
   font-weight: 700;
+}
+
+.content-area {
+  width: auto !important;
+  float: unset !important;
+  margin-left: 0 !important;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.products {
+  margin-top: 30px;
+  margin-bottom: 230px;
+}
+
+.products .home2-product-image {
+  padding: 30px;
+  background: #f8f8f8;
+}
+
+.gallery-image {
+  margin-top: 10px;
+}
+
+.faq-section {
+  margin-top: 20px;
+}
+
+.faq-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.faq-section p {
+  margin-bottom: 15px;
+}
+
+.two-columns .column-side.noa-single-summary {
+  width: 40%;
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+}
+
+.noa-product-summary {
+  max-width: 463px;
+  width: 100%;
+}
+
+.noa-product-summary .product_title.entry-title {
+  font-family: var(--font-UbuntuRegular);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 125%;
+  text-align: right;
+  color: var(--grey);
+  margin-bottom: 21px;
+}
+
+.noa-product-summary p.price {
+  margin-bottom: 21px;
+}
+
+.noa-product-summary p.price * {
+  font-family: var(--third-family);
+  font-weight: 350;
+  font-size: 17px;
+  line-height: 156%;
+  color: rgba(45, 0, 9, 0.7);
+}
+
+.noa-product-summary button.single_add_to_cart_button {
+  background: #0b0b0b !important;
+  width: 100%;
+  height: 48px;
+}
+
+.noa-single-add-to-cart {
+  position: relative;
+}
+
+.noa-single-add-to-cart .cart-icon {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+
+.noakirel-single-product .two-columns {
+  flex-wrap: nowrap;
+}
+
+.two-columns .column-side.noa-single-images {
+  max-width: 1050px;
+  width: 60%;
+}
+
+.noa-product-summary .faq-section {
+  margin-top: 61px;
+}
+
+.faq-section {
+  margin-top: 20px;
+  text-align: right;
+  direction: rtl;
+}
+
+.faq-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.accordion-item {
+  position: relative;
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 15px 0;
+  text-align: right;
+  font-family: var(--font-UbuntuRegular);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 186%;
+  color: rgba(45, 0, 9, 0.7);
+}
+
+.accordion-item.active .accordion-content {
+  display: block;
+}
+
+.accordion-title {
+  display: block;
+  width: 100%;
+  position: relative;
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+  padding-right: 0;
+}
+
+.accordion-title:hover {
+  background: transparent;
+}
+
+.accordion-title-text::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 0.8px;
+  background: rgba(45, 0, 9, 0.7);
+  margin-top: 10px;
+}
+
+.accordion-title.active::after {
+  transform: rotate(45deg);
+}
+
+.accordion-content {
+  display: none;
+  font-family: var(--font-UbuntuRegular);
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: capitalize;
+  text-align: right;
+  color: rgba(45, 0, 9, 0.7);
+}
+
+.accordion-content p {
+  margin: 0;
+}
+
+svg.accordion-icon {
+  fill: rgba(45, 0, 9, .7);
+  color: rgba(45, 0, 9, .7);
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+
+.accordion-icon-minus {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.accordion-item.active .accordion-icon-minus {
+  opacity: 1;
+  visibility: visible;
+}
+
+.accordion-icon-plus {
+  opacity: 1;
+  visibility: visible;
+}
+
+.accordion-item.active .accordion-icon-plus {
+  opacity: 0;
+  visibility: hidden;
 }

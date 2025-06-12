@@ -45,15 +45,16 @@ add_filter('ins_get_svg_icon_pro', function($svg) {
   return '<svg class="header-cart-icon" width="26" height="26" fill="currentColor" role="img" aria-label="Cart icon"><use href="' . esc_url(sprite('cart')) . '"></use></svg>';
 });
 
+
 /**
- * Prints out the mobile menu modal.
+ * Injects the mobile menu HTML and the tracking script into the footer.
  *
- * @param string $id The ID for the modal element. Defaults to `mobile-menu`.
- * @param string $content The content to be printed out inside the modal. Defaults to the output of the `wp_nav_menu` function.
+ * The mobile menu is created using the `wp_nav_menu` function, with the main menu slug.
+ * The script is injected from the W Sell service.
  *
  * @since 1.0.0
  */
-function mobile_menu_modal() {
+function footer_injection() {
   ?>
   <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
   <div id="mobile-menu" class="mobile-menu">
@@ -71,9 +72,11 @@ function mobile_menu_modal() {
       </nav8>
     </div>
   </div>
+
+  <script type="text/javascript" src="https://track.wesell.co.il/script/tracking/firstPartyCookie/0wZzSoFGzjQ"></script>
   <?php
 }
-add_action('wp_footer', 'mobile_menu_modal');
+add_action('wp_footer', 'footer_injection');
 
 /**
  * Disable automatic line breaks in contact form 7

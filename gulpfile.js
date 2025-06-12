@@ -8,8 +8,6 @@ import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
-import fonter from 'gulp-fonter';
-import ttf2woff2 from 'gulp-ttf2woff2';
 import svgmin from 'gulp-svgmin';
 import svgstore from 'gulp-svgstore';
 import rename from 'gulp-rename';
@@ -57,39 +55,42 @@ gulp.task('compile-rtl', function (done) {
   });
 });
 
-// Convert fonts to WOFF2
-gulp.task('convert-fonts', () => {
-  return gulp.src('assets/fonts/theme/*.{ttf,otf}')
-    .pipe(fonter({
-      formats: ['woff2']
-    }))
-    .pipe(ttf2woff2())
-    .pipe(gulp.dest('assets/fonts/theme/'));
-});
-
-// Generate fonts CSS
+// Generate fonts CSS with preload
 gulp.task('generate-fonts-css', (done) => {
   const fontDir = 'assets/fonts/theme';
   const cssFile = 'assets/css/draft/__02-fonts.css';
   let cssContent = '';
   let cssVariables = ':root {\n';
 
+  // Group files by base name
+  const fonts = {};
   fs.readdirSync(fontDir).forEach(file => {
-    if (file.endsWith('.woff2')) {
-      const baseName = path.basename(file, '.woff2');
-      const varName = baseName.replace(/[-_](.)/g, (_, c) => c.toUpperCase());
-      cssContent += `
+    if (file.match(/\.(ttf|otf|woff|woff2)$/i)) {
+      const baseName = path.basename(file, path.extname(file));
+      if (!fonts[baseName]) fonts[baseName] = [];
+      fonts[baseName].push(file);
+    }
+  });
+
+  // Generate @font-face for each base name
+  for (const baseName in fonts) {
+    const files = fonts[baseName];
+    const src = files.map(file => {
+      const ext = path.extname(file).slice(1).toLowerCase();
+      return `url('../fonts/theme/${file}') format('${ext}')`;
+    }).join(',\n    ');
+
+    cssContent += `
 @font-face {
   font-family: '${baseName}';
-  src: url('../fonts/theme/${file}') format('woff2');
+  src: ${src};
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 `;
-      cssVariables += `  --font-${varName}: '${baseName}', sans-serif;\n`;
-    }
-  });
+    cssVariables += `  --font-${baseName.replace(/[-_](.)/g, (_, c) => c.toUpperCase())}: '${baseName}', sans-serif;\n`;
+  }
 
   cssVariables += '}\n';
   cssContent += '\n' + cssVariables;
@@ -115,7 +116,7 @@ gulp.task('svg-combine', () => {
 });
 
 // Font, SVG
-gulp.task('fonts', gulp.series('convert-fonts', 'generate-fonts-css'));
+gulp.task('fonts', gulp.series('generate-fonts-css'));
 gulp.task('icons', gulp.series('svg-optimize', 'svg-combine'));
 
 // Watch task to run tasks on file changes

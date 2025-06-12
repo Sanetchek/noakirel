@@ -30,7 +30,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
             <div class="checkout-payment-methods-wrapper">
                 <?php
                 $available_gateways = WC()->payment_gateways()->get_available_payment_gateways();
-                error_log(print_r($available_gateways, true)); // Check logs in wp-content/debug.log
                 if (!empty($available_gateways)) {
                     echo '<h2>'  . __('אפשרויות תשלום', 'noakirel') . '</h2>';
                     echo '<ul class="checkout-payment-methods">';
@@ -47,13 +46,13 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                                         <div class="tranzila_wrapper_payment">
                                             <?php foreach ($payment_methods as $payment_method) : ?>
                                                 <?php echo liteimage($payment_method['image'], [
-                                                    'thumb' => [0, 16],
+                                                    'thumb' => [0, 20],
                                                 ]); ?>
                                             <?php endforeach; ?>
                                         </div>
                                     <?php endif ?>
                                 <?php endif ?>
-                                <?php echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
+                                <?php // echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
                             </label>
                         </li>
                     <?php endforeach;
@@ -93,15 +92,32 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                                     }
                                     ?>
                                     <div class="product-quantity-inline">
-                                        <?php echo intval( $cart_item['quantity'] ); ?>
+                                        <button type="button" class="quantity-plus" data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>" data-product_id="<?php echo esc_attr( $cart_item['product_id'] ); ?>">
+                                            <svg class='qty-plus-btn' width='24' height='24' role='img' aria-label='<?php esc_attr_e( 'Plus Quantity', 'noakirel' ); ?>'>
+                                                <use href='<?php echo esc_url(sprite('qty-plus')); ?>'></use>
+                                            </svg>
+                                        </button>
+                                        <input type="number"
+                                            id="quantity_<?php echo esc_attr( $cart_item_key ); ?>"
+                                            class="quantity-input"
+                                            value="<?php echo intval( $cart_item['quantity'] ); ?>"
+                                            min="1"
+                                            data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>"
+                                            data-product_id="<?php echo esc_attr( $cart_item['product_id'] ); ?>"
+                                            aria-label="<?php esc_attr_e( 'Quantity', 'noakirel' ); ?>">
+                                        <button type="button" class="quantity-minus" data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>" data-product_id="<?php echo esc_attr( $cart_item['product_id'] ); ?>">
+                                            <svg class='qty-minus-btn' width='24' height='24' role='img' aria-label='<?php esc_attr_e( 'Minus Quantity', 'noakirel' ); ?>'>
+                                                <use href='<?php echo esc_url(sprite('qty-minus')); ?>'></use>
+                                            </svg>
+                                        </button>
                                     </div>
                                     <div class="product-remove-inline">
                                         <a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>"
-                                            class="remove"
-                                            aria-label="<?php esc_attr_e( 'Remove this item', 'noakirel' ); ?>"
-                                            data-product_id="<?php echo esc_attr( $cart_item['product_id'] ); ?>"
-                                            data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>"
-                                            data-product_sku="<?php echo esc_attr( $_product->get_sku() ); ?>">
+                                        class="remove"
+                                        aria-label="<?php esc_attr_e( 'Remove this item', 'noakirel' ); ?>"
+                                        data-product_id="<?php echo esc_attr( $cart_item['product_id'] ); ?>"
+                                        data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>"
+                                        data-product_sku="<?php echo esc_attr( $_product->get_sku() ); ?>">
                                             <?php _e( 'הסרה', 'noakirel' ); ?>
                                         </a>
                                     </div>
@@ -145,6 +161,15 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                     <?php do_action( 'woocommerce_review_order_before_payment' ); ?>
                     <div id="payment" class="woocommerce-checkout-payment-wrapper">
                         <div class="form-row place-order">
+                            <p class="form-row">
+                                <!-- <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="confirm_mailing_updates" id="confirm_mailing_updates" value="1">
+                                    <span class="woocommerce-confirm-mailing-updates-checkbox-text"><?php echo __('מאשר רישום לקבלת דיוור ועדכונים', 'noakirel') ?></span>
+                                </label> -->
+
+                            </p>
+
+
                             <noscript>
                                 <?php
                                 /* translators: $1 and $2 opening and closing emphasis tags respectively */
@@ -216,7 +241,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
             $.ajax({
                 type: 'POST',
-                url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+                url: wc_checkout_params.ajax_url,
                 data: {
                     action: 'woocommerce_apply_coupon',
                     coupon_code: couponCode,
@@ -278,7 +303,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
             $.ajax({
                 type: 'POST',
-                url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+                url: wc_checkout_params.ajax_url,
                 data,
                 beforeSend: function() {
                     $('.checkout-loader').addClass('show');
@@ -349,5 +374,71 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                 }
             });
         });
+
+        // Handle plus button click
+        $('.quantity-plus').on('click', function () {
+            let input = $(this).siblings('.quantity-input');
+            let newQty = parseInt(input.val()) + 1;
+            updateCart(input, newQty);
+        });
+
+        // Handle minus button click
+        $('.quantity-minus').on('click', function () {
+            let input = $(this).siblings('.quantity-input');
+            let newQty = parseInt(input.val()) - 1;
+            if (newQty >= 1) { // Prevent quantity from going below 1
+                updateCart(input, newQty);
+            }
+        });
+
+        // Handle manual input change
+        $('.quantity-input').on('change', function () {
+            let newQty = parseInt($(this).val());
+            if (newQty >= 1) { // Ensure quantity is at least 1
+                updateCart($(this), newQty);
+            } else {
+            $(this).val(1); // Reset to 1 if invalid
+                updateCart($(this), 1);
+            }
+        });
+
+        // Function to update cart via AJAX
+        function updateCart(input, quantity) {
+            let cart_item_key = input.data('cart_item_key');
+            let product_id = input.data('product_id');
+            const inputQuantity = $(input).closest('.product-quantity-inline').find('.quantity-input');
+            $(inputQuantity).val(quantity); // Update the input value
+
+            $.ajax({
+            type: 'POST',
+            url: wc_checkout_params.ajax_url,
+            data: {
+                action: 'update_cart_quantity',
+                cart_item_key: cart_item_key,
+                quantity: quantity
+            },
+            beforeSend: function () {
+                $('.product-quantity-inline input, .product-quantity-inline button').prop('disabled', true);
+                $('.checkout-loader').addClass('show');
+            },
+            success: function (response) {
+                // Clear any existing messages
+                    $('.woocommerce-message').remove();
+                    // Fetch updated coupon display
+                    $.get('<?php echo esc_url( wc_get_checkout_url() ); ?>', function(data) {
+                        var $newSummary = $(data).find('.custom-order-summary').html();
+                        var $newPayment = $(data).find('.woocommerce-checkout-payment-wrapper').html();
+                        $('.custom-order-summary').html($newSummary);
+                        $('.woocommerce-checkout-payment-wrapper').html($newPayment);
+
+                        $('.product-quantity-inline input, .product-quantity-inline button').prop('disabled', false);
+                        $('.checkout-loader').removeClass('show');
+                    });
+            },
+            error: function () {
+                alert('Error updating cart. Please try again.');
+            }
+            });
+        }
     });
 </script>

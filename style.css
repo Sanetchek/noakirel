@@ -830,11 +830,6 @@ table tbody h2 a {
   margin: 0
 }
 
-.error404.right-sidebar .content-area,
-.error404.left-sidebar .content-area {
-  width: 100%
-}
-
 .error404 .fourohfour-columns-2 {
   padding: 2.617924em 0;
   border: 1px solid rgba(0, 0, 0, .05);
@@ -2029,22 +2024,10 @@ button.menu-toggle::after {
     clear: both
   }
 
-  .content-area {
-    width: 73.9130434783%;
-    float: left;
-    margin-right: 4.347826087%
-  }
-
   .widget-area {
     width: 21.7391304348%;
     float: right;
     margin-right: 0
-  }
-
-  .right-sidebar .content-area {
-    width: 73.9130434783%;
-    float: left;
-    margin-right: 4.347826087%
   }
 
   .right-sidebar .widget-area {
@@ -2053,36 +2036,10 @@ button.menu-toggle::after {
     margin-right: 0
   }
 
-  .left-sidebar .content-area {
-    width: 73.9130434783%;
-    float: right;
-    margin-right: 0
-  }
-
   .left-sidebar .widget-area {
     width: 21.7391304348%;
     float: left;
     margin-right: 4.347826087%
-  }
-
-  .storefront-full-width-content .content-area {
-    width: 100%;
-    float: left;
-    margin-left: 0;
-    margin-right: 0
-  }
-
-  .content-area,
-  .widget-area {
-    margin-bottom: 2.617924em
-  }
-
-  .page-template-template-fullwidth-php .content-area,
-  .page-template-template-homepage-php .content-area {
-    width: 100%;
-    float: left;
-    margin-left: 0;
-    margin-right: 0
   }
 
   .footer-widgets::before,

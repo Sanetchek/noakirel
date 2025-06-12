@@ -37,12 +37,14 @@ get_header(); ?>
               <div class="swiper-slide">
                 <div class="hero2-gallery-item">
                   <?php
-                    $image = wp_get_attachment_image_src($image_id, [528, 528]);
                     echo liteimage($image_id, [
                       'thumb' => [528, 528],
-                      'max' => ['420' => [420, 420]],
+                      'max' => [
+                        '1600' => [480, 480],
+                        '420' => [420, 420]
+                      ],
                       'args' => [
-                        'alt' => esc_attr(get_post_meta($image_id, '_wp_attachment_image_alt', true) ?: __('Gallery image', 'noakirel'))
+                        'loading' => 'eager',
                       ]
                     ]);
                   ?>
@@ -182,10 +184,10 @@ get_header(); ?>
 
     <?php $field = get_field('collection_list'); ?>
     <?php if ($field) : ?>
-      <div class="home2-collection-list four-columns swiper-container">
+      <div class="home2-collection-list swiper-container">
         <div class="swiper-wrapper">
           <?php foreach ($field as $product_id) : ?>
-            <div class="swiper-slide column-side">
+            <div class="swiper-slide">
               <?php echo render_home2_product_item($product_id, [425, 425]); ?>
             </div>
           <?php endforeach; ?>

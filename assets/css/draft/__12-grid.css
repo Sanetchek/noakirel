@@ -48,7 +48,7 @@
 
 @media screen and (max-width: 992px) {
   .two-columns {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .two-columns .column-side {
@@ -70,7 +70,6 @@
 }
 
 @media screen and (max-width: 768px) {
-
   .three-columns,
   .four-columns,
   .five-columns {

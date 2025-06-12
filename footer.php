@@ -108,7 +108,7 @@
 			<div class="footer_wrapper_payment">
 				<?php foreach ($payment_methods as $payment_method) : ?>
 					<?php echo liteimage($payment_method['image'], [
-						'thumb' => [0, 22],
+						'thumb' => [0, 25],
 					]); ?>
 				<?php endforeach; ?>
 			</div>

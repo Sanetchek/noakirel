@@ -36,6 +36,7 @@ require 'inc/custom-functions.php';
 require 'inc/woocommerce.php';
 require 'inc/acf.php';
 require 'inc/hooks.php';
+require 'inc/preload-fonts.php';
 
 add_action( 'wp_enqueue_scripts', 'my_custom_assets', 20 );
 
@@ -72,10 +73,6 @@ function my_custom_assets() {
 		true
 	);
 
-	if ( is_checkout() ) {
-		wp_enqueue_style( 'checkout-style', get_stylesheet_directory_uri() . '/assets/css/checkout-style.css', array(), '1.0', 'all' );
-	}
-
 	// Noakirel Styles (LTR or RTL)
 	if ( is_rtl() ) {
 		wp_enqueue_style(
@@ -102,6 +99,10 @@ function my_custom_assets() {
 		'1.0',
 		true
 	);
+
+	wp_localize_script('noakirel-scripts', 'noa', array(
+		'ajax_url' => admin_url('admin-ajax.php')
+	));
 }
 
 add_action( 'wp_ajax_woocommerce_apply_coupon', 'custom_apply_coupon' );
@@ -556,13 +557,10 @@ function custom_clean_checkout_fields( $fields ) {
 
     return $fields;
 }
-
-
 add_filter( 'woocommerce_checkout_blocks_enabled', '__return_false' );
 
 
-add_action('woocommerce_thankyou', 'custom_debug_purchase_event', 10, 1);
-function custom_debug_purchase_event($order_id) {
+add_action('woocommerce_thankyou', function ($order_id) {
 	if (!$order_id) return;
 	$order = wc_get_order($order_id);
 	if (!$order) return;
@@ -571,27 +569,27 @@ function custom_debug_purchase_event($order_id) {
 	foreach ($order->get_items() as $item) {
 		$product = $item->get_product();
 		$items[] = [
-			'item_name' => $item->get_name(),
-			'item_id'   => $product ? $product->get_sku() : '',
-			'price'     => $order->get_line_subtotal($item),
-			'quantity'  => $item->get_quantity(),
+			'item_name'  => $item->get_name(),
+			'item_id'    => $product ? $product->get_sku() : '',
+			'price'      => round(($order->get_line_subtotal($item) / $item->get_quantity()), 2),
+			'quantity'   => $item->get_quantity(),
 		];
 	}
 
-	echo "\n<!-- Pushing purchase event manually via PHP -->\n";
 	?>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		window.dataLayer.push({
-				event: "purchase",
-				ecommerce: {
-						transaction_id: "<?php echo esc_js($order->get_order_number()); ?>",
-						affiliation: "WooCommerce",
-						value: <?php echo esc_js($order->get_total()); ?>,
-						currency: "<?php echo esc_js($order->get_currency()); ?>",
-						items: <?php echo json_encode($items); ?>
-				}
+			event: "purchase",
+			ecommerce: {
+				transaction_id: "<?php echo esc_js($order->get_order_number()); ?>",
+				affiliation: "WooCommerce",
+				value: <?php echo esc_js($order->get_total()); ?>,
+				currency: "ILS",
+				items: <?php echo json_encode($items); ?>
+			}
 		});
+		console.log("✅ GA4 purchase event pushed!", window.dataLayer);
 	</script>
-<?php
-}
+	<?php
+});

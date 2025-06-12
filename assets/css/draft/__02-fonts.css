@@ -1,7 +1,7 @@
 
 @font-face {
   font-family: 'Jost-Medium';
-  src: url('../fonts/theme/Jost-Medium.woff2') format('woff2');
+  src: url('../fonts/theme/Jost-Medium.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'Jost-Regular';
-  src: url('../fonts/theme/Jost-Regular.woff2') format('woff2');
+  src: url('../fonts/theme/Jost-Regular.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: 'NotoSansHK-Light';
-  src: url('../fonts/theme/NotoSansHK-Light.woff2') format('woff2');
+  src: url('../fonts/theme/NotoSansHK-Light.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -25,7 +25,7 @@
 
 @font-face {
   font-family: 'NotoSansHK-Thin';
-  src: url('../fonts/theme/NotoSansHK-Thin.woff2') format('woff2');
+  src: url('../fonts/theme/NotoSansHK-Thin.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -33,7 +33,7 @@
 
 @font-face {
   font-family: 'OpenSans-Regular';
-  src: url('../fonts/theme/OpenSans-Regular.woff2') format('woff2');
+  src: url('../fonts/theme/OpenSans-Regular.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -41,7 +41,7 @@
 
 @font-face {
   font-family: 'Roboto-Bold';
-  src: url('../fonts/theme/Roboto-Bold.woff2') format('woff2');
+  src: url('../fonts/theme/Roboto-Bold.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -49,15 +49,7 @@
 
 @font-face {
   font-family: 'Roboto-Light';
-  src: url('../fonts/theme/Roboto-Light.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto-LightItalic';
-  src: url('../fonts/theme/Roboto-LightItalic.woff2') format('woff2');
+  src: url('../fonts/theme/Roboto-Light.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -65,7 +57,7 @@
 
 @font-face {
   font-family: 'Roboto-Regular';
-  src: url('../fonts/theme/Roboto-Regular.woff2') format('woff2');
+  src: url('../fonts/theme/Roboto-Regular.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -73,7 +65,7 @@
 
 @font-face {
   font-family: 'Ubuntu-Bold';
-  src: url('../fonts/theme/Ubuntu-Bold.woff2') format('woff2');
+  src: url('../fonts/theme/Ubuntu-Bold.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -81,7 +73,7 @@
 
 @font-face {
   font-family: 'Ubuntu-Light';
-  src: url('../fonts/theme/Ubuntu-Light.woff2') format('woff2');
+  src: url('../fonts/theme/Ubuntu-Light.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -89,7 +81,7 @@
 
 @font-face {
   font-family: 'Ubuntu-Medium';
-  src: url('../fonts/theme/Ubuntu-Medium.woff2') format('woff2');
+  src: url('../fonts/theme/Ubuntu-Medium.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -97,7 +89,7 @@
 
 @font-face {
   font-family: 'Ubuntu-Regular';
-  src: url('../fonts/theme/Ubuntu-Regular.woff2') format('woff2');
+  src: url('../fonts/theme/Ubuntu-Regular.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -111,7 +103,6 @@
   --font-OpenSansRegular: 'OpenSans-Regular', sans-serif;
   --font-RobotoBold: 'Roboto-Bold', sans-serif;
   --font-RobotoLight: 'Roboto-Light', sans-serif;
-  --font-RobotoLightItalic: 'Roboto-LightItalic', sans-serif;
   --font-RobotoRegular: 'Roboto-Regular', sans-serif;
   --font-UbuntuBold: 'Ubuntu-Bold', sans-serif;
   --font-UbuntuLight: 'Ubuntu-Light', sans-serif;

@@ -97,6 +97,7 @@ select {
 [type="reset"],
 [type="submit"],
 button {
+	appearance: button;
 	-webkit-appearance: button;
 }
 
@@ -127,6 +128,7 @@ progress {
 }
 
 [type="search"] {
+	appearance: textfield;
 	-webkit-appearance: textfield;
 	outline-offset: -2px;
 }

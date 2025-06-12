@@ -11,61 +11,63 @@ get_header(); ?>
     $logo = $section['logo'];
     $description = $section['description'];
   ?>
-  <section class="signature_wrapper">
-    <div class="signature" data-aos="fade-right">
-      <div class="swiper signature-swiper">
-        <div class="swiper-wrapper">
-          <?php if ( $images ) :
-            foreach ( $images as $img ) : ?>
-              <div class="swiper-slide">
-                <img src="<?= esc_url( $img['url'] ) ?>" alt="<?= esc_attr( $img['alt'] ) ?>">
-              </div>
-          <?php endforeach; endif; ?>
+  <div class="front_wrapper">
+    <section class="signature_wrapper">
+      <div class="signature" data-aos="fade-right">
+        <div class="swiper signature-swiper">
+          <div class="swiper-wrapper">
+            <?php if ( $images ) :
+              foreach ( $images as $img ) : ?>
+                <div class="swiper-slide">
+                  <img src="<?= esc_url( $img['url'] ) ?>" alt="<?= esc_attr( $img['alt'] ) ?>">
+                </div>
+            <?php endforeach; endif; ?>
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
-        <div class="swiper-pagination"></div>
       </div>
-    </div>
 
-    <div class="signature_info" data-aos="fade-left">
-      <div class="signature_info_wrapper">
-        <div class="signature_info_wrapper_block">
-          <?php if ( $title ) : ?>
-            <h1><?= esc_html( $title ) ?></h1>
+      <div class="signature_info" data-aos="fade-left">
+        <div class="signature_info_wrapper">
+          <div class="signature_info_wrapper_block">
+            <?php if ( $title ) : ?>
+              <h1><?= esc_html( $title ) ?></h1>
+            <?php endif; ?>
+
+            <?php if ( $logo ) : ?>
+              <img src="<?= esc_url( $logo ) ?>" alt="logo" />
+            <?php endif; ?>
+          </div>
+
+
+          <?php if ( $description ) : ?>
+            <p><?= esc_html( $description ) ?></p>
           <?php endif; ?>
 
-          <?php if ( $logo ) : ?>
-            <img src="<?= esc_url( $logo ) ?>" alt="logo" />
-          <?php endif; ?>
+          <?php
+          $product_id = 77;
+          $product = wc_get_product($product_id);
+          ?>
+
+          <a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>"
+             data-quantity="1"
+             class="btn_add add_to_cart_button ajax_add_to_cart"
+             data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
+             data-product_sku="<?php echo esc_attr( $product->get_sku() ); ?>"
+             aria-label="<?php echo esc_html( $product->add_to_cart_description() ); ?>"
+             rel="nofollow">
+
+             <span class="btn-text">קנו עכשיו</span>
+             <span class="btn-icon">
+               <span class="icon-cart"><img src="https://noakirel.co/wp-content/uploads/2025/04/Link.svg" alt="asd"></span>
+               <span class="icon-check" style="display:none;">✔️</span>
+             </span>
+          </a>
+
         </div>
-
-
-        <?php if ( $description ) : ?>
-          <p><?= esc_html( $description ) ?></p>
-        <?php endif; ?>
-
-        <?php
-        $product_id = 77;
-        $product = wc_get_product($product_id);
-        ?>
-
-        <a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>"
-           data-quantity="1"
-           class="btn_add add_to_cart_button ajax_add_to_cart"
-           data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
-           data-product_sku="<?php echo esc_attr( $product->get_sku() ); ?>"
-           aria-label="<?php echo esc_html( $product->add_to_cart_description() ); ?>"
-           rel="nofollow">
-
-           <span class="btn-text">קנו עכשיו</span>
-           <span class="btn-icon">
-             <span class="icon-cart"><img src="https://noakirel.co/wp-content/uploads/2025/04/Link.svg" alt="asd"></span>
-             <span class="icon-check" style="display:none;">✔️</span>
-           </span>
-        </a>
-
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
   <?php endif; ?>
 
 
