@@ -247,49 +247,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('#shipping_method .shipping_method').forEach(radio => {
-    // Handle initial state
-    const li = radio.closest('li');
-    if (radio.checked) {
-      li.classList.add('active');
-    }
+  function setupMethods(selector, radioClass, activeClass = 'active') {
+    document.querySelectorAll(`${selector} ${radioClass}`).forEach(radio => {
+      const li = radio.closest('li');
+      if (radio.checked) li?.classList.add(activeClass);
 
-    // Handle change events
-    radio.addEventListener('change', function () {
-      // Remove 'active' from all li elements
-      document.querySelectorAll('#shipping_method li').forEach(item => {
-        item.classList.remove('active');
+      radio.addEventListener('change', () => {
+        document.querySelectorAll(`${selector} li`).forEach(item => item.classList.remove(activeClass));
+        if (radio.checked) radio.closest('li')?.classList.add(activeClass);
       });
-      // Add 'active' to the closest li of the checked radio
-      if (this.checked) {
-        this.closest('li').classList.add('active');
-      }
     });
+  }
+
+  function updateActiveStates() {
+    setupMethods('#shipping_method', '.shipping_method');
+    setupMethods('.checkout-payment-methods', '.payment_method_radio');
+  }
+
+  // Debounce to prevent excessive calls
+  let timeout;
+
+  function debouncedUpdate() {
+    clearTimeout(timeout);
+    timeout = setTimeout(updateActiveStates, 100);
+  }
+
+  // Initial setup
+  updateActiveStates();
+
+  // Observe broader DOM changes
+  const observer = new MutationObserver(debouncedUpdate);
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
   });
 
-  updatePaymentMethodActiveState(); // Run on load
-
-  document.querySelectorAll('.checkout-payment-methods .payment_method_radio').forEach(radio => {
-    radio.addEventListener('change', updatePaymentMethodActiveState);
-  });
-
-  // Run again after WooCommerce updates the checkout
-  jQuery(document.body).on('updated_checkout', function () {
-    updatePaymentMethodActiveState();
-  });
+  // Handle WooCommerce checkout updates
+  jQuery(document.body).on('updated_checkout', debouncedUpdate);
 });
-
-function updatePaymentMethodActiveState() {
-  document.querySelectorAll('.checkout-payment-methods li').forEach(item => {
-    item.classList.remove('active');
-  });
-
-  document.querySelectorAll('.checkout-payment-methods .payment_method_radio').forEach(radio => {
-    if (radio.checked) {
-      radio.closest('li').classList.add('active');
-    }
-  });
-}
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {

@@ -69,7 +69,8 @@ function part($file_name = '', $args = []) {
  * @param string $acf_logo_field The ACF field name for the logo. Defaults to 'header_logo'.
  */
 function show_header_logo($acf_logo_field = 'header_logo') {
-	$logo = get_field($acf_logo_field, 'option') ?? assets('images/logo.svg');
+	$field = get_field($acf_logo_field, 'option');
+    $logo = $field ?: assets('images/logo.svg');
 	?>
 	<a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo" aria-label="<?php esc_attr_e('Go to homepage', 'noakirel'); ?>">
 		<img src="<?php echo esc_url($logo); ?>" alt="<?php esc_attr_e('Site logo', 'noakirel'); ?>">
@@ -153,6 +154,7 @@ function render_product_thumbnail_link( $product_id, $thumb = [0, 370] ) {
 		class="product-thumb-wrapper"
 		aria-label="<?php echo esc_attr( $product_name ); ?>"
 	>
+		<div class="thumb-wrap">
 		<?php if ( $thumbnail_id ) : ?>
 			<?php echo liteimage( $thumbnail_id, [
 				'thumb' => $thumb,
@@ -168,12 +170,15 @@ function render_product_thumbnail_link( $product_id, $thumb = [0, 370] ) {
 				class="product-thumb-first"
 			/>
 		<?php endif; ?>
+		</div>
 
 		<?php if ( ! empty( $gallery_ids ) ) : ?>
+			<div class="hovered-wrap">
 			<?php echo liteimage( $gallery_ids[0], [
 				'thumb' => $thumb,
 				'args'  => [ 'class' => 'product-thumb-hovered' ],
 			] ); ?>
+			</div>
 		<?php endif; ?>
 	</a>
 	<?php
@@ -261,4 +266,74 @@ function display_product_accordion($list) {
 	endif;
 
 	return ob_get_clean(); // Return the buffered output
+}
+
+// Add checkbox to user profile
+add_action('show_user_profile', 'add_email_updates_checkbox');
+add_action('edit_user_profile', 'add_email_updates_checkbox');
+function add_email_updates_checkbox($user) {
+    $email_updates = get_user_meta($user->ID, 'email_updates', true);
+    ?>
+    <h3>Email Preferences</h3>
+    <table class="form-table">
+        <tr>
+            <th><label for="email_updates">Confirm Email Updates</label></th>
+            <td>
+                <input type="checkbox" name="email_updates" id="email_updates" value="1" <?php checked($email_updates, 1); ?> />
+                <span class="description">Receive email updates?</span>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+// Save checkbox value
+add_action('personal_options_update', 'save_email_updates_checkbox');
+add_action('edit_user_profile_update', 'save_email_updates_checkbox');
+function save_email_updates_checkbox($user_id) {
+    if (!current_user_can('edit_user', $user_id)) {
+        return false;
+    }
+    $value = isset($_POST['email_updates']) ? 1 : 0;
+    update_user_meta($user_id, 'email_updates', $value);
+}
+
+// Get checkbox value
+function get_email_updates_status($user_id) {
+    return get_user_meta($user_id, 'email_updates', true) == 1;
+}
+
+/**
+ * Displays a shop header image with optional link.
+ *
+ * This function outputs an HTML structure containing an image with specified
+ * dimensions and classes. If a link is provided, the image is wrapped in an
+ * anchor tag with the given URL and target attributes.
+ *
+ * @param array|null $link An associative array containing 'url', 'target', and 'title'
+ *                         keys for the link details, or null if no link is needed.
+ * @param int|null   $image_id The ID of the image to be displayed, or null if no image is available.
+ */
+function display_shop_head_image($link, $image_id) {
+	if ($link) : ?>
+		<a href="<?= $link['url'] ?>" target="<?= $link['target'] ?>" class="shop-header-link" aria-label="<?= esc_attr($link['title'] ? $link['title'] : __('Link', 'noakirel')) ?>">
+	<?php endif ?>
+
+	<?php if ($image_id) : ?>
+		<?php $alt = get_post_meta($image_id, '_wp_attachment_image_alt', true) ?: __('Image', 'textdomain'); ?>
+		<?php echo liteimage($image_id, [
+			'thumb' => [896, 896],
+			'min' => [
+				'0' => [320, 320],
+				'480' => [480, 480],
+				'768' => [768, 768],
+				'896' => [896, 896],
+			],
+			'args' => ['class' => 'shop-header-image'],
+		]); ?>
+	<?php endif; ?>
+
+	<?php if ($link) : ?>
+		</a>
+	<?php endif;
 }

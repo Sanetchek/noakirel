@@ -28,6 +28,19 @@
 <div id="page" class="hfeed site">
 	<?php do_action('storefront_before_header'); ?>
 
+	<?php $strip_text = get_field('strip_text', 'option'); ?>
+	<?php if ($strip_text) : ?>
+		<div class="noa-strip">
+			<div class="container">
+				<?php if (wp_is_mobile()) : ?>
+					<p class="strip-text string-running"><?php echo esc_html($strip_text); ?></p>
+				<?php else : ?>
+					<p class="strip-text"><?php echo esc_html($strip_text); ?></p>
+				<?php endif ?>
+			</div>
+		</div>
+	<?php endif ?>
+
 	<?php $masterhead_class = wp_is_mobile() ? 'header-inner-mobile' : 'header-inner-desktop'; ?>
 	<header id="masthead" class="site-header <?php echo $masterhead_class; ?>" role="banner" style="<?php storefront_header_styles(); ?>">
 		<div class="container">

@@ -161,12 +161,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                     <?php do_action( 'woocommerce_review_order_before_payment' ); ?>
                     <div id="payment" class="woocommerce-checkout-payment-wrapper">
                         <div class="form-row place-order">
-                            <p class="form-row">
-                                <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                                    <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="confirm_mailing_updates" id="confirm_mailing_updates" value="1">
-                                    <span class="woocommerce-confirm-mailing-updates-checkbox-text"><?php echo __('מאשר רישום לקבלת דיוור ועדכונים', 'noakirel') ?></span>
-                                </label>
-                            </p>
+                            <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
                             <noscript>
                                 <?php
@@ -177,8 +172,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                             </noscript>
 
                             <?php wc_get_template( 'checkout/terms.php' ); ?>
-
-                            <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
                             <?php
                             $subtotal = wp_strip_all_tags( wc_price( WC()->cart->get_subtotal() + WC()->cart->get_shipping_total() ) );
@@ -362,6 +355,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         $('.custom-order-summary').html($newSummary);
                         $('.woocommerce-checkout-payment-wrapper').html($newPayment);
                         $('.checkout-payment-methods-wrapper').html($newPaymentMethod);
+                        const $firstMethod = $('.checkout-payment-methods .wc_payment_method:first');
+                        $firstMethod.addClass('active');
+                        $firstMethod.find('input[type="radio"]').prop('checked', true);
                         $('.checkout-loader').removeClass('show');
                         $('.shipping_method').prop('disabled', false);
                         $('.checkout-payment-methods-wrapper input').prop('disabled', false);

@@ -1,0 +1,46 @@
+.product-count {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 150%;
+    text-align: center;
+    vertical-align: text-top;
+}
+
+.shop-gallery {
+    position: relative;
+    overflow: hidden;
+}
+
+.shop-header {
+    max-width: 1920px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 68px;
+    padding-left: 68px;
+    margin-bottom: 90px;
+}
+
+.shop-header .two-columns {
+    gap: 0;
+}
+
+.shop-header .two-columns .column-side {
+    width: 50%;
+}
+
+.swiper-shop-prev,
+.swiper-shop-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+}
+
+.swiper-shop-prev {
+    left: 26px;
+}
+
+.swiper-shop-next {
+    right: 26px;
+}

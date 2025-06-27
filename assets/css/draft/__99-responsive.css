@@ -513,6 +513,14 @@
     background-position: center;
   }
 
+  .shop-header .two-columns .column-side {
+    width: 100%;
+  }
+
+  .shop-header .two-columns {
+    gap: var(--gap-2);
+  }
+
   .two-columns .column-side.noa-single-summary,
   .two-columns .column-side.noa-single-images {
     max-width: unset;
@@ -671,6 +679,11 @@
 
   .page_wrapper h3 {
     font-size: 20px;
+  }
+
+  .shop-header {
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 

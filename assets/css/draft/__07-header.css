@@ -1,3 +1,42 @@
+.noa-strip {
+  background: #000;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  direction: rtl;
+}
+
+p.strip-text {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  height: 30px;
+}
+
+p.strip-text.string-running {
+  display: inline-block;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 16px;
+  line-height: 30px;
+  position: absolute;
+  will-change: transform;
+  animation: marquee-rtl 30s linear infinite;
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(-35%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 .site-header {
   height: var(--header-height);
   margin-bottom: 0 !important;
